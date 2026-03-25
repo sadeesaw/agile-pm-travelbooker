@@ -260,7 +260,7 @@ const PACKAGES = [
     price: 1850,
     rating: 4.8,
     reviews: 156,
-    img: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=900&q=80',
+    img: 'https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=900&q=80',
     badge: 'Family Special',
     desc: 'Explore ancient temples, wildlife safaris, and pristine beaches with family-friendly activities and child discounts.',
     includes: [
@@ -317,6 +317,12 @@ const AGENT_CLIENTS = [
   { id: 'carlos-mendes', name: 'Carlos Mendes', contact: 'carlos@travel.co', phone: '+1 555-0987', type: 'Individual', lastTrip: 'Patagonia Trek', totalSpent: '$14,600', status: 'Active', details: 'Adventure travel specialist client' },
   { id: 'nordic-enterprises', name: 'Nordic Enterprises', contact: 'travel@nordic.com', phone: '+1 555-0432', type: 'Corporate', lastTrip: 'Multiple destinations', totalSpent: '$89,400', status: 'Active', details: '67 employees; strategic partner' },
   { id: 'lisa-thompson', name: 'Lisa Thompson', contact: 'lisa@consulting.net', phone: '+1 555-0765', type: 'Business', lastTrip: 'London Conference', totalSpent: '$6,200', status: 'Planning', details: 'Frequent high-value client' }
+];
+
+const ADMIN_USERS = [
+  { id: 'john-smith', name: 'John Smith', role: 'Customer', email: 'john@mail.com', joined: 'Jan 2024', bookings: 7, status: 'Active', details: 'Regular family traveler; 3 international trips this year.' },
+  { id: 'martinez-agency', name: 'Martinez Agency', role: 'Agent', email: 'contact@martineztravel.com', joined: 'Mar 2023', bookings: 248, status: 'Active', details: 'Top agent partner with corporate and leisure accounts.' },
+  { id: 'acme-corp', name: 'ACME Corp', role: 'Corporate', email: 'travel@acme.com', joined: 'Jun 2023', bookings: 84, status: 'Under Review', details: 'Corporate travel agreement pending renewal.' }
 ];
 
 // ════════════════════════════════════════════════
@@ -421,7 +427,15 @@ function renderInfoPage(sub) {
     cancel: renderCancel,
     destinations: renderDestinations,
     deals: renderDeals,
-    guides: renderGuides
+    guides: renderGuides,
+    'group-access': renderGroupAccess,
+    'group-dashboard': renderGroupDashboard,
+    'group-discounts': renderGroupDiscounts,
+    'group-payment': renderGroupPayment,
+    'group-policies': renderGroupPolicies,
+    'group-comparison': renderGroupComparison,
+    'travel-smarter': renderTravelSmarter,
+    'corporate-policy': renderCorporatePolicy
   };
 
   if (pages[sub]) {
@@ -1104,6 +1118,201 @@ function validateBookingStep1() {
   return true;
 }
 
+function toggleBusinessNameField() {
+  const groupType = document.getElementById('bkgGroupType').value;
+  const businessField = document.getElementById('businessNameField');
+  if (groupType === 'Corporate Group' || groupType === 'Travel Agent Bulk') {
+    businessField.style.display = 'block';
+  } else {
+    businessField.style.display = 'none';
+  }
+}
+
+function toggleBusinessAuthField(roleId, fieldId) {
+  const role = document.getElementById(roleId).value;
+  const field = document.getElementById(fieldId);
+  if (!field) return;
+  if (role === 'agent' || role === 'corporate') {
+    field.style.display = 'block';
+  } else {
+    field.style.display = 'none';
+  }
+}
+
+function updatePaymentSummary() {
+  // Placeholder for payment summary calculation
+  // In a real app, this would calculate taxes, fees, etc.
+  const travelers = parseInt(document.getElementById('bkgTravelers').value) || 1;
+  const basePrice = currentPkg ? currentPkg.price : 0;
+  const subtotal = basePrice * travelers;
+  const tax = subtotal * 0.12; // 12% tax
+  const total = subtotal + tax;
+
+  // Update payment summary elements if they exist
+  const payTravelers = document.getElementById('payTravelers');
+  const paySubtotal = document.getElementById('paySubtotal');
+  const payTax = document.getElementById('payTax');
+  const payTotal = document.getElementById('payTotal');
+
+  if (payTravelers) payTravelers.textContent = travelers;
+  if (paySubtotal) paySubtotal.textContent = '$' + subtotal.toLocaleString();
+  if (payTax) payTax.textContent = '$' + Math.round(tax).toLocaleString();
+  if (payTotal) payTotal.textContent = '$' + Math.round(total).toLocaleString();
+}
+
+function showGroupCoordinationInfo(feature) {
+  const valid = ['access', 'dashboard', 'discounts', 'payment', 'policies', 'comparison'];
+  if (valid.includes(feature)) {
+    navigate('info-group-' + feature);
+  } else {
+    showToast('Feature page not found', 'error');
+  }
+}
+
+function renderGroupAccess() {
+  return `
+    <button class="back-btn" onclick="navigate('group')">Back to Group Coordination</button>
+    <div class="info-hero"><h1>Group Access & Tracking</h1><p>Real-time visibility and coordinated workflow for all group members.</p></div>
+    <div class="info-section">
+      <h3>What You Get</h3>
+      <ul>
+        <li><strong>Shared Dashboard</strong> for everyone involved in the booking</li>
+        <li><strong>Real-time updates</strong> on booking progress, payments and changes</li>
+        <li><strong>Group member management</strong>: add, remove or assign roles</li>
+        <li><strong>Automated reminders</strong> for documents, payments and check-in</li>
+      </ul>
+    </div>
+  `;
+}
+
+function renderGroupDashboard() {
+  return `
+    <button class="back-btn" onclick="navigate('group')">Back to Group Coordination</button>
+    <div class="info-hero"><h1>Trip Coordinator Dashboard</h1><p>Centralized controls for all group travel activities.</p></div>
+    <div class="info-section">
+      <h3>Dashboard Features</h3>
+      <ul>
+        <li>Booking overview and status tracking</li>
+        <li>Task assignment and deadline monitoring</li>
+        <li>Shared document repository for passports, visas and insurance</li>
+        <li>Expense and contribution tracking</li>
+      </ul>
+    </div>
+  `;
+}
+
+function renderGroupDiscounts() {
+  return `
+    <button class="back-btn" onclick="navigate('group')">Back to Group Coordination</button>
+    <div class="info-hero"><h1>Group Discounts & Packages</h1><p>Tiered pricing and specially curated group packages.</p></div>
+    <div class="info-section">
+      <h3>Discount Breakpoints</h3>
+      <ul>
+        <li>10+ travelers: 10% off</li>
+        <li>20+ travelers: 15% off + complimentary coordinator support</li>
+        <li>50+ travelers: 20% off + custom itinerary creation</li>
+      </ul>
+      <h3>Why it works</h3>
+      <p>By pooling services, accommodations, and transport, the group saves significantly while still getting premium custom options.</p>
+    </div>
+  `;
+}
+
+function renderGroupPayment() {
+  return `
+    <button class="back-btn" onclick="navigate('group')">Back to Group Coordination</button>
+    <div class="info-hero"><h1>Split Payment Tools</h1><p>Flexible payment handling built for groups.</p></div>
+    <div class="info-section">
+      <ul>
+        <li>Individual contribution links</li>
+        <li>Coordinator-managed bulk payment option</li>
+        <li>Installment and milestone payment plans</li>
+        <li>Automatic reminders for outstanding invoices</li>
+      </ul>
+    </div>
+  `;
+}
+
+function renderGroupPolicies() {
+  return `
+    <button class="back-btn" onclick="navigate('group')">Back to Group Coordination</button>
+    <div class="info-hero"><h1>Flexible Policies</h1><p>Group-friendly change and cancellation terms.</p></div>
+    <div class="info-section">
+      <h3>Group Cancellation Policy</h3>
+      <ul>
+        <li>60+ days: full refund</li>
+        <li>30-60 days: 75% refund</li>
+        <li>14-30 days: 50% refund</li>
+        <li>7-14 days: 25% refund</li>
+        <li>0-6 days: no refund (force majeure excluded)</li>
+      </ul>
+      <h3>Change Management</h3>
+      <p>Same-day schedule changes for major group travel incidents (weather, strikes, cancellations); easy add/remove members.</p>
+    </div>
+  `;
+}
+
+function renderGroupComparison() {
+  return `
+    <button class="back-btn" onclick="navigate('group')">Back to Group Coordination</button>
+    <div class="info-hero"><h1>Interactive Comparison Charts</h1><p>Side-by-side package, price, and inclusion analysis.</p></div>
+    <div class="info-section">
+      <ul>
+        <li>Package comparison matrix</li>
+        <li>Per-person vs total cost analysis</li>
+        <li>Feature highlights and missing inclusions</li>
+        <li>Downloadable comparison sheets</li>
+      </ul>
+    </div>
+  `;
+}
+
+function renderTravelSmarter() {
+  return `
+    <button class="back-btn" onclick="navigate('home')">Back to Home</button>
+    <div class="info-hero"><h1>Travel Smarter</h1><p>Discover our AI, tools, and business-grade coordination for modern travel.</p></div>
+    <div class="info-section">
+      <h3>Smart Features</h3>
+      <ul>
+        <li>AI itinerary planning tuned to your preferences</li>
+        <li>Real-time pricing guarantees and dynamic re-pricing alerts</li>
+        <li>Group collaboration dashboard with task/status workflows</li>
+        <li>Custom alerts for deadlines, reviews, and mandatory documents</li>
+      </ul>
+      <h3>How It Helps</h3>
+      <p>Less administration, more confidence. <strong>TravelBooker</strong> helps teams, families, agents, and enterprises minimize cost overruns and maximize satisfaction.</p>
+    </div>
+  `;
+}
+
+function renderCorporatePolicy() {
+  return `
+    <button class="back-btn" onclick="navigate('dashboard')">Back to Dashboard</button>
+    <div class="info-hero"><h1>Corporate Partner Travel Policy</h1><p>A structured, transparent corporate travel policy for partners.</p></div>
+    <div class="info-section">
+      <h3>Policy Summary</h3>
+      <p>TravelBooker partners with corporate clients to deliver controlled, compliant, and budget-friendly business travel.</p>
+      <ul>
+        <li><strong>Scope:</strong> Business trip bookings, employee-level travel, and group incentive travel.</li>
+        <li><strong>Approval:</strong> All requests must be approved by managers before booking. Escalations after 24h.</li>
+        <li><strong>Booking Window:</strong> Minimum 14 days lead time for regular travel; 30 days for international travel.</li>
+        <li><strong>Cost Controls:</strong> Per-diem allowances, class of travel, accommodation max rates, and preferred supplier usage.</li>
+        <li><strong>Payment:</strong> Central invoicing, corporate credit line, and split payment options.</li>
+        <li><strong>Cancellations:</strong> 30+ days for full refund; 15-30 days partial; less than 15 days subject to supplier penalties.</li>
+      </ul>
+    </div>
+    <div class="info-section">
+      <h3>Employee Safety & Compliance</h3>
+      <ul>
+        <li>24/7 emergency assistance and travel-risk monitoring</li>
+        <li>Visa and immigration support for all corporate destinations</li>
+        <li>Health & safety requirements aligned with WHO travel advisories</li>
+        <li>Environmental & sustainability partner programs (offsetting, local impact)</li>
+      </ul>
+    </div>
+  `;
+}
+
 function confirmBooking() {
   const ref = 'TB-2025-' + Math.random().toString(36).toUpperCase().substr(2, 6);
   document.getElementById('confirmRef').textContent = ref;
@@ -1195,6 +1404,7 @@ const DASH_CONFIGS = {
     label: 'Administrator',
     sections: [
       { group: 'Management', items: [{ icon: 'overview', label: 'Overview' }, { icon: 'packages', label: 'Packages' }, { icon: 'users', label: 'Users' }, { icon: 'bookings', label: 'Bookings' }] },
+      { group: 'Trips',     items: [{ icon: 'past', label: 'Past Trips' }] },
       { group: 'System',     items: [{ icon: 'alerts', label: 'Alerts' }, { icon: 'analytics', label: 'Analytics' }, { icon: 'settings', label: 'Settings' }] }
     ]
   }
@@ -1453,6 +1663,49 @@ function getAgentContent(s) {
       </table></div>
     </div>`;
 
+  if (s === 'commission') return `
+    <div class="dash-header"><h2>Commission Tracking</h2><p>Monitor your earnings and commission rates</p></div>
+    <div class="stats-grid">
+      <div class="stat-card"><div class="label">Total Earned</div><div class="value">$34,200</div><div class="sub">This year</div></div>
+      <div class="stat-card"><div class="label">Pending</div><div class="value">$2,450</div><div class="sub">To be paid</div></div>
+      <div class="stat-card"><div class="label">Avg. Commission</div><div class="value">8.5%</div><div class="sub">Per booking</div></div>
+      <div class="stat-card"><div class="label">This Month</div><div class="value">$4,120</div><div class="sub">+15% vs last</div></div>
+    </div>
+    <div class="dash-card">
+      <h4>Commission Breakdown</h4>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Package</th><th>Bookings</th><th>Total Value</th><th>Commission Rate</th><th>Earned</th></tr></thead>
+        <tbody>
+          <tr><td>Bali Retreat</td><td>23</td><td>$37,470</td><td>10%</td><td>$3,747</td></tr>
+          <tr><td>Japan Cherry Blossom</td><td>18</td><td>$64,800</td><td>8%</td><td>$5,184</td></tr>
+          <tr><td>Maldives Overwater</td><td>15</td><td>$48,000</td><td>12%</td><td>$5,760</td></tr>
+          <tr><td>Serengeti Safari</td><td>8</td><td>$16,800</td><td>15%</td><td>$2,520</td></tr>
+          <tr><td>Sri Lanka Family</td><td>12</td><td>$22,320</td><td>9%</td><td>$2,009</td></tr>
+        </tbody>
+      </table></div>
+    </div>`;
+
+  if (s === 'reports') return `
+    <div class="dash-header"><h2>Reports & Analytics</h2><p>Detailed insights into your business performance</p></div>
+    <div class="stats-grid">
+      <div class="stat-card"><div class="label">Conversion Rate</div><div class="value">24.5%</div><div class="sub">Quotes to bookings</div></div>
+      <div class="stat-card"><div class="label">Client Retention</div><div class="value">78%</div><div class="sub">Repeat business</div></div>
+      <div class="stat-card"><div class="label">Avg. Trip Size</div><div class="value">4.2</div><div class="sub">Travelers per booking</div></div>
+      <div class="stat-card"><div class="label">Top Destination</div><div class="value">Bali</div><div class="sub">45% of bookings</div></div>
+    </div>
+    <div class="dash-card">
+      <h4>Monthly Performance</h4>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Month</th><th>Bookings</th><th>Revenue</th><th>Commission</th><th>Growth</th></tr></thead>
+        <tbody>
+          <tr><td>January 2025</td><td>28</td><td>$89,400</td><td>$7,152</td><td><span class="badge badge-green">+12%</span></td></tr>
+          <tr><td>February 2025</td><td>32</td><td>$102,800</td><td>$8,224</td><td><span class="badge badge-green">+15%</span></td></tr>
+          <tr><td>March 2025</td><td>35</td><td>$118,200</td><td>$9,456</td><td><span class="badge badge-green">+9%</span></td></tr>
+          <tr><td>April 2025</td><td>29</td><td>$94,600</td><td>$7,568</td><td><span class="badge badge-red">-5%</span></td></tr>
+        </tbody>
+      </table></div>
+    </div>`;
+
   return fallbackDash(s);
 }
 
@@ -1467,7 +1720,10 @@ function getCorporateContent(s) {
       <div class="stat-card"><div class="label">Pending</div><div class="value">5</div><div class="sub">Approvals needed</div></div>
     </div>
     <div class="dash-card">
-      <h4>Pending Approvals</h4>
+      <div style="margin-bottom:16px;display:flex;align-items:center;justify-content:space-between;">
+        <h4>Pending Approvals</h4>
+        <button class="btn btn-sm btn-outline" onclick="navigate('info-corporate-policy')">View Corporate Travel Policy</button>
+      </div>
       <div class="table-wrap"><table>
         <thead><tr><th>Employee</th><th>Package</th><th>Purpose</th><th>Cost</th><th>Action</th></tr></thead>
         <tbody>
@@ -1540,6 +1796,73 @@ function getCorporateContent(s) {
       </table></div>
     </div>`;
 
+  if (s === 'policy') return `
+    <div class="dash-header"><h2>Travel Policy</h2><p>Manage your company's travel guidelines and restrictions</p></div>
+    <div class="dash-card">
+      <h4>Current Travel Policy</h4>
+      <div class="policy-section">
+        <h5>Booking Approval Requirements</h5>
+        <ul>
+          <li>Trips under $2,000: Automatic approval</li>
+          <li>Trips $2,000–$5,000: Manager approval required</li>
+          <li>Trips over $5,000: Senior management approval required</li>
+          <li>International trips: Additional compliance check</li>
+        </ul>
+      </div>
+      <div class="policy-section">
+        <h5>Preferred Airlines & Hotels</h5>
+        <ul>
+          <li>Airlines: United, Delta, Emirates (preferred partners)</li>
+          <li>Hotels: Marriott, Hilton, IHG (corporate rates available)</li>
+          <li>Ground transportation: Enterprise, Hertz (preferred)</li>
+        </ul>
+      </div>
+      <div class="policy-section">
+        <h5>Expense Guidelines</h5>
+        <ul>
+          <li>Meals: $75/day domestic, $100/day international</li>
+          <li>Incidentals: $50/day maximum</li>
+          <li>Receipts required for all expenses over $25</li>
+          <li>Pre-approval required for entertainment expenses</li>
+        </ul>
+      </div>
+      <div class="policy-section">
+        <h5>Safety & Compliance</h5>
+        <ul>
+          <li>All destinations must be reviewed for travel advisories</li>
+          <li>Travel insurance mandatory for all trips</li>
+          <li>Emergency contact information must be provided</li>
+          <li>Post-trip expense reports due within 30 days</li>
+        </ul>
+      </div>
+      <div style="margin-top:20px">
+        <button class="btn btn-outline" onclick="showToast('Policy update feature coming soon')">Update Policy</button>
+        <button class="btn btn-primary" style="margin-left:10px" onclick="showToast('Policy exported')">Export Policy</button>
+      </div>
+    </div>`;
+
+  if (s === 'spend') return `
+    <div class="dash-header"><h2>Spend Report</h2><p>Track and analyze travel spending across your organization</p></div>
+    <div class="stats-grid">
+      <div class="stat-card"><div class="label">Q1 Spend</div><div class="value">$84,200</div><div class="sub">vs $90k budget</div></div>
+      <div class="stat-card"><div class="label">Avg. per Employee</div><div class="value">$248</div><div class="sub">This quarter</div></div>
+      <div class="stat-card"><div class="label">Top Category</div><div class="value">Flights</div><div class="sub">42% of spend</div></div>
+      <div class="stat-card"><div class="label">Compliance Rate</div><div class="value">94%</div><div class="sub">Policy adherence</div></div>
+    </div>
+    <div class="dash-card">
+      <h4>Spending by Category</h4>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Category</th><th>Amount</th><th>% of Total</th><th>vs Budget</th></tr></thead>
+        <tbody>
+          <tr><td>Flights</td><td>$35,400</td><td>42%</td><td><span class="badge badge-green">Under</span></td></tr>
+          <tr><td>Hotels</td><td>$28,600</td><td>34%</td><td><span class="badge badge-green">Under</span></td></tr>
+          <tr><td>Meals & Expenses</td><td>$12,800</td><td>15%</td><td><span class="badge badge-orange">Slightly over</span></td></tr>
+          <tr><td>Ground Transport</td><td>$4,200</td><td>5%</td><td><span class="badge badge-green">Under</span></td></tr>
+          <tr><td>Other</td><td>$3,200</td><td>4%</td><td><span class="badge badge-green">Under</span></td></tr>
+        </tbody>
+      </table></div>
+    </div>`;
+
   return fallbackDash(s);
 }
 
@@ -1605,9 +1928,9 @@ function getAdminContent(s) {
       <div class="table-wrap"><table>
         <thead><tr><th>User</th><th>Role</th><th>Joined</th><th>Bookings</th><th>Status</th><th>Action</th></tr></thead>
         <tbody>
-          <tr><td>John Smith</td><td>Customer</td><td>Jan 2024</td><td>7</td><td><span class="badge badge-green">Active</span></td><td><button class="btn btn-sm btn-outline" onclick="showToast('Viewing profile')">View</button></td></tr>
-          <tr><td>Martinez Agency</td><td>Agent</td><td>Mar 2023</td><td>248</td><td><span class="badge badge-green">Active</span></td><td><button class="btn btn-sm btn-outline" onclick="showToast('Viewing profile')">View</button></td></tr>
-          <tr><td>ACME Corp</td><td>Corporate</td><td>Jun 2023</td><td>84</td><td><span class="badge badge-orange">Under Review</span></td><td><button class="btn btn-sm btn-outline" onclick="showToast('Viewing profile')">View</button></td></tr>
+          <tr><td>John Smith</td><td>Customer</td><td>Jan 2024</td><td>7</td><td><span class="badge badge-green">Active</span></td><td><button class="btn btn-sm btn-outline" onclick="viewAdminUser('john-smith')">View</button></td></tr>
+          <tr><td>Martinez Agency</td><td>Agent</td><td>Mar 2023</td><td>248</td><td><span class="badge badge-green">Active</span></td><td><button class="btn btn-sm btn-outline" onclick="viewAdminUser('martinez-agency')">View</button></td></tr>
+          <tr><td>ACME Corp</td><td>Corporate</td><td>Jun 2023</td><td>84</td><td><span class="badge badge-orange">Under Review</span></td><td><button class="btn btn-sm btn-outline" onclick="viewAdminUser('acme-corp')">View</button></td></tr>
         </tbody>
       </table></div>
     </div>`;
@@ -1661,6 +1984,37 @@ function getAdminContent(s) {
       </table></div>
     </div>`;
 
+  if (s === 'past') return `
+    <div class="dash-header"><h2>Past Trips</h2><p>All completed trips across the platform</p></div>
+    <div class="stats-grid">
+      <div class="stat-card"><div class="label">Total Completed</div><div class="value">8,420</div><div class="sub">All time</div></div>
+      <div class="stat-card"><div class="label">This Month</div><div class="value">1,240</div><div class="sub">+8% vs last month</div></div>
+      <div class="stat-card"><div class="label">Avg. Rating</div><div class="value">4.7</div><div class="sub">Customer satisfaction</div></div>
+      <div class="stat-card"><div class="label">Repeat Customers</div><div class="value">68%</div><div class="sub">Book again</div></div>
+    </div>
+    <div class="dash-card">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
+        <span style="font-size:.9rem;color:var(--gray-600)">Recent completed trips</span>
+        <div style="display:flex;gap:8px">
+          <button class="btn btn-sm btn-outline" onclick="showToast('Exporting data...')">Export</button>
+          <button class="btn btn-sm btn-outline" onclick="showToast('Generating report...')">Report</button>
+        </div>
+      </div>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Reference</th><th>Customer</th><th>Package</th><th>Completion Date</th><th>Amount</th><th>Rating</th></tr></thead>
+        <tbody>
+          <tr><td style="font-family:monospace;font-size:.78rem">TB-2025-AB3F2</td><td>Sarah Anderson</td><td>Bali Retreat</td><td>Jan 15, 2025</td><td>$1,290</td><td>⭐⭐⭐⭐⭐</td></tr>
+          <tr><td style="font-family:monospace;font-size:.78rem">TB-2025-KL2WX</td><td>Carlos Mendes</td><td>Amalfi Coast Odyssey</td><td>Nov 18, 2024</td><td>$2,850</td><td>⭐⭐⭐⭐⭐</td></tr>
+          <tr><td style="font-family:monospace;font-size:.78rem">TB-2025-VB9NM</td><td>Nimali Fernando</td><td>Sri Lanka Family Adventure</td><td>Oct 22, 2024</td><td>$1,850</td><td>⭐⭐⭐⭐⭐</td></tr>
+          <tr><td style="font-family:monospace;font-size:.78rem">TB-2025-HJ4QR</td><td>Lisa Thompson</td><td>Patagonia Wilderness Trek</td><td>Sep 8, 2024</td><td>$3,900</td><td>⭐⭐⭐⭐⭐</td></tr>
+          <tr><td style="font-family:monospace;font-size:.78rem">TB-2025-RT3YU</td><td>Chaminda Perera</td><td>Maldives Overwater Paradise</td><td>Aug 15, 2024</td><td>$3,200</td><td>⭐⭐⭐⭐⭐</td></tr>
+          <tr><td style="font-family:monospace;font-size:.78rem">TB-2025-WE8OP</td><td>Rashika de Silva</td><td>New Zealand South Island</td><td>Jul 3, 2024</td><td>$2,800</td><td>⭐⭐⭐⭐⭐</td></tr>
+          <tr><td style="font-family:monospace;font-size:.78rem">TB-2025-ZX5CV</td><td>Global Marketing Inc</td><td>Iceland Northern Lights</td><td>Jun 12, 2024</td><td>$4,100</td><td>⭐⭐⭐⭐⭐</td></tr>
+          <tr><td style="font-family:monospace;font-size:.78rem">TB-2025-BN7MK</td><td>Sunil Jayawardena</td><td>Vietnam Cultural Journey</td><td>May 28, 2024</td><td>$1,950</td><td>⭐⭐⭐⭐⭐</td></tr>
+        </tbody>
+      </table></div>
+    </div>`;
+
   return fallbackDash(s);
 }
 
@@ -1686,7 +2040,12 @@ function bookingTable(list, actions, showClient = false) {
       <td>${b.date}</td>
       <td><span class="badge ${b.status === 'Completed' ? 'badge-green' : b.status === 'Upcoming' ? 'badge-blue' : 'badge-red'}">${b.status}</span></td>
       <td>$${Number(b.amount).toLocaleString()}</td>
-      ${actions ? `<td>${b.status !== 'Cancelled' ? `<button class="btn btn-sm btn-danger" onclick="cancelBooking('${b.ref}')">Cancel</button>` : '<span style="color:var(--gray-400);font-size:.82rem">Cancelled</span>'}</td>` : ''}
+      ${actions ? `<td>${
+        b.status === 'Upcoming' ? `<button class="btn btn-sm btn-danger" onclick="cancelBooking('${b.ref}')">Cancel</button>` :
+        b.status === 'Cancelled' ? '<span style="color:var(--gray-400);font-size:.82rem">Cancelled</span>' :
+        b.status === 'Completed' ? `<button class="btn btn-sm btn-outline" onclick="showToast('Rebooking feature coming soon')">Rebook</button>` :
+        b.status
+      }</td>` : ''}
     </tr>`).join('')}</tbody>
   </table></div>`;
 }
@@ -1898,6 +2257,37 @@ function submitBulkBooking() {
   validateBulkForm();
 }
 
+function cancelBooking(ref) {
+  // Find the booking in the history
+  const booking = bookingHistory.find(b => b.ref === ref);
+  if (!booking) {
+    showToast('Booking not found', 'error');
+    return;
+  }
+
+  if (booking.status === 'Cancelled') {
+    showToast('Booking is already cancelled');
+    return;
+  }
+
+  if (booking.status === 'Completed') {
+    showToast('Cannot cancel completed trips');
+    return;
+  }
+
+  // Show confirmation dialog
+  if (!confirm(`Are you sure you want to cancel booking ${ref}? This action cannot be undone.`)) {
+    return;
+  }
+
+  // Update booking status
+  booking.status = 'Cancelled';
+  showToast(`Booking ${ref} has been cancelled`);
+
+  // Refresh the current dashboard section
+  renderDashContent(activeDashSection);
+}
+
 function approveBooking(employeeId) {
   showToast(`Booking approved for ${employeeId.replace('-', ' ')}`);
   // In a real app, this would update the database
@@ -1976,6 +2366,33 @@ function viewClient(clientId) {
   document.getElementById('dashContent').innerHTML = detailHtml;
 }
 
+function viewAdminUser(userId) {
+  const user = ADMIN_USERS.find(u => u.id === userId);
+  if (!user) {
+    showToast('User profile not found', 'error');
+    return;
+  }
+
+  const userHtml = `
+    <div class="dash-header"><h2>${user.name}</h2><p>Admin detail view</p></div>
+    <div class="dash-card" style="margin-bottom:20px">
+      <div><strong>Role:</strong> ${user.role}</div>
+      <div><strong>Email:</strong> ${user.email}</div>
+      <div><strong>Joined:</strong> ${user.joined}</div>
+      <div><strong>Bookings:</strong> ${user.bookings}</div>
+      <div><strong>Status:</strong> <span class="badge ${user.status === 'Active' ? 'badge-green' : user.status === 'Under Review' ? 'badge-orange' : 'badge-gray'}">${user.status}</span></div>
+      <div><strong>Details:</strong> ${user.details}</div>
+    </div>
+    <div class="dash-card">
+      <h4>Related Bookings</h4>
+      ${bookingTable(bookingHistory.filter(b => b.client && b.client.toLowerCase().includes(user.name.toLowerCase().split(' ')[0])), false)}
+    </div>
+    <button class="btn btn-sm btn-outline" onclick="renderDashContent('users')">Back to user list</button>
+  `;
+
+  document.getElementById('dashContent').innerHTML = userHtml;
+}
+
 // ════════════════════════════════════════════════
 // NEWSLETTER
 // ════════════════════════════════════════════════
@@ -2004,4 +2421,8 @@ function handleNewsletter() {
   document.querySelector('.logo').addEventListener('keydown', e => {
     if (e.key === 'Enter') navigate('home');
   });
+
+  // Initialize business name field visibility for auth pages
+  toggleBusinessAuthField('loginRole', 'loginBusinessNameField');
+  toggleBusinessAuthField('signupRole', 'signupBusinessNameField');
 })();
