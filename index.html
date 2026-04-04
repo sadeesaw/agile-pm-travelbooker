@@ -337,7 +337,7 @@
       <button class="back-btn light" onclick="navigate('home')">Back to Home</button>
       <div>
         <h2>Luxury Destinations</h2>
-        <p>Discover <span id="hotelCount">10</span> exceptional stays across Sri Lanka</p>
+        <p>Discover <span id="hotelCount">15</span> exceptional stays across Sri Lanka</p>
       </div>
     </div>
   </div>
@@ -557,7 +557,7 @@
               <option>Canada</option><option>Germany</option><option>France</option><option>Other</option>
             </select>
           </div>
-          <div class="form-field"><label>Passport Number</label><input type="text" placeholder="AB123456" /></div>
+          <div class="form-field"><label>NIC Number</label><input type="text" placeholder="200012345678" /></div>
           <div class="form-field full"><label>Special Requests</label><textarea rows="3" placeholder="Dietary requirements, accessibility needs, room preferences..."></textarea></div>
         </div>
       </div>
@@ -571,21 +571,59 @@
       <div class="form-card">
         <h3>Payment Details <span class="badge badge-green">Simulation Only</span></h3>
         <div class="alert alert-warning">This is a prototype simulation. No real payment will be processed.</div>
-        <div class="pill-tabs" id="paymentTabs">
-          <button class="pill-tab active" onclick="switchPillTab(this, 'paymentTabs')">Credit Card</button>
-          <button class="pill-tab" onclick="switchPillTab(this, 'paymentTabs')">Bank Transfer</button>
-          <button class="pill-tab" onclick="switchPillTab(this, 'paymentTabs')">Digital Wallet</button>
+        <div class="payment-tab-wrap">
+          <div class="pill-tabs payment-tabs" id="paymentTabs">
+            <button class="pill-tab active" data-panel="card" onclick="switchPillTab(this, 'paymentTabs')">Credit Card</button>
+            <button class="pill-tab" data-panel="bank" onclick="switchPillTab(this, 'paymentTabs')">Bank Transfer</button>
+            <button class="pill-tab" data-panel="wallet" onclick="switchPillTab(this, 'paymentTabs')">Digital Wallet</button>
+          </div>
         </div>
-        <div class="form-grid">
-          <div class="form-field full"><label>Cardholder Name</label><input type="text" placeholder="John Smith" /></div>
-          <div class="form-field full"><label>Card Number</label><input type="text" placeholder="•••• •••• •••• ••••" maxlength="19" /></div>
-          <div class="form-field"><label>Expiry Date</label><input type="text" placeholder="MM / YY" /></div>
-          <div class="form-field"><label>CVV</label><input type="text" placeholder="•••" maxlength="3" /></div>
+        <div class="payment-panel active" data-panel-group="paymentTabs" data-panel="card">
+          <div class="form-grid">
+            <div class="form-field full"><label>Cardholder Name</label><input type="text" placeholder="John Smith" /></div>
+            <div class="form-field full"><label>Card Number</label><input type="text" placeholder="•••• •••• •••• ••••" maxlength="19" /></div>
+            <div class="form-field"><label>Expiry Date</label><input type="text" placeholder="MM / YY" /></div>
+            <div class="form-field"><label>CVV</label><input type="text" placeholder="•••" maxlength="3" /></div>
+          </div>
+        </div>
+        <div class="payment-panel" data-panel-group="paymentTabs" data-panel="bank">
+          <div class="payment-info-card">
+            <h4>Bank Transfer Details</h4>
+            <div class="payment-info-grid">
+              <div><strong>Bank Name:</strong> Bank of Ceylon</div>
+              <div><strong>Account Name:</strong> TravelBooker Pvt Ltd</div>
+              <div><strong>Account Number:</strong> 784512369874</div>
+              <div><strong>Branch:</strong> Colombo Fort</div>
+              <div><strong>SWIFT Code:</strong> BCEYLKLX</div>
+              <div><strong>Reference:</strong> Use your booking name</div>
+            </div>
+          </div>
+          <div class="form-grid">
+            <div class="form-field"><label>Transfer Date</label><input type="date" /></div>
+            <div class="form-field"><label>Transferred Amount</label><input type="number" placeholder="295680" /></div>
+            <div class="form-field full"><label>Upload Bank Receipt</label><div class="upload-field"><input type="file" id="bankReceiptInput" class="upload-input" accept=".jpg,.jpeg,.png,.pdf" onchange="handleReceiptUpload(this, 'bankReceiptName')" /><label for="bankReceiptInput" class="upload-dropzone"><span class="upload-btn">Upload Receipt</span><span class="upload-file-name" id="bankReceiptName"></span></label></div></div>
+          </div>
+        </div>
+        <div class="payment-panel" data-panel-group="paymentTabs" data-panel="wallet">
+          <div class="form-grid">
+            <div class="form-field"><label>Wallet Provider</label>
+              <select>
+                <option>eZ Cash</option>
+                <option>mCash</option>
+                <option>PayPal</option>
+                <option>Apple Pay</option>
+                <option>Google Pay</option>
+              </select>
+            </div>
+            <div class="form-field"><label>Wallet Number / ID</label><input type="text" placeholder="0771234567 or wallet ID" /></div>
+            <div class="form-field"><label>Transaction Reference</label><input type="text" placeholder="TXN-458721" /></div>
+            <div class="form-field"><label>Wallet Holder Name</label><input type="text" placeholder="John Smith" /></div>
+          </div>
         </div>
         <div class="pay-summary">
-          <div class="price-row"><span>Base price per person &times; <span id="payTravelers">number of</span> travelers</span><span id="paySubtotal">$0</span></div>
-          <div class="price-row"><span>Taxes &amp; fees (12%)</span><span id="payTax">$0</span></div>
-          <div class="price-row total"><span>Total Amount</span><span id="payTotal">$0</span></div>
+          <div class="price-row"><span id="payBaseLabel">Base price for 1 traveler</span><span id="paySubtotal">Rs.0</span></div>
+          <div class="price-row"><span>Taxes &amp; fees (12%)</span><span id="payTax">Rs.0</span></div>
+          <div class="price-row total"><span>Total Amount</span><span id="payTotal">Rs.0</span></div>
         </div>
       </div>
       <div class="form-actions space-between">
@@ -952,9 +990,6 @@
       <p>Special packages designed for group travel with coordinated booking and group discounts</p>
     </div>
     <div class="packages-grid" id="groupGrid"></div>
-    <div class="section-cta">
-      <button class="btn btn-outline" onclick="navigate('packages')">View All Packages</button>
-    </div>
   </section>
 </div>
 
@@ -1073,15 +1108,15 @@
 <div class="compare-bar" id="compareBar">
   <span class="compare-label">Comparing:</span>
   <div class="compare-items" id="compareItems"></div>
-  <button class="btn btn-primary btn-sm" onclick="runCompare()">Compare Now</button>
-  <button class="btn btn-sm btn-ghost-dark" onclick="clearCompare()">Clear</button>
+  <button class="btn btn-primary btn-sm" id="compareActionBtn" onclick="runCompare()">Compare Now</button>
+  <button class="btn btn-sm btn-ghost-dark" id="compareClearBtn" onclick="clearCompare()">Clear</button>
 </div>
 
 <!-- Compare Modal -->
 <div class="modal-overlay" id="compareModal" onclick="closeCompareModal(event)">
   <div class="modal">
     <button class="modal-close" onclick="document.getElementById('compareModal').classList.remove('open')" aria-label="Close">&#10005;</button>
-    <h3>Package Comparison</h3>
+    <h3 id="compareModalTitle">Package Comparison</h3>
     <div id="compareContent" class="compare-table-wrap"></div>
   </div>
 </div>
@@ -1099,3 +1134,7 @@
 <script src="app.js"></script>
 </body>
 </html>
+
+
+
+

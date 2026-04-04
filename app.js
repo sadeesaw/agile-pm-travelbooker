@@ -632,6 +632,7 @@ let currentPkg  = null;
 let currentHotel = null;
 let compareList = [];
 let hotelCompareList = [];
+let selectedTravelers = 2;
 let rooms       = [{ id: 1, people: 2 }];
 let bookingStep = 1;
 let aiOpen      = false;
@@ -1038,8 +1039,8 @@ function renderFaq() {
 function renderCancel() {
   const isAdmin = currentRole === 'admin';
   return `
-    <button class="back-btn" onclick="navigate('home')">Back to Home</button>
-    <div class="info-hero"><h1>Cancellation Policy</h1><p>Clear, fair, and transparent. No surprises.</p></div>
+    <button class="back-btn" onclick="navigate('home')" style="margin-bottom:12px">Back to Home</button>
+    <div class="info-hero" style="margin-bottom:24px"><h1>Cancellation Policy</h1><p>Clear, fair, and transparent. No surprises.</p></div>
     <div class="info-section">
       <h3>Booking Cancellation Terms</h3>
       <div class="policy-notice" style="background:#fef3c7;border:1px solid #f59e0b;border-radius:8px;padding:16px;margin:16px 0;color:#92400e">
@@ -1213,7 +1214,7 @@ function renderFamilyPackages(dest, budget = Infinity) {
 }
 
 function renderGroupPackages(dest, budget = Infinity) {
-  let list = PACKAGES.filter(p => p.price <= 3000); // More affordable for groups
+  let list = [...PACKAGES];
   if (dest) {
     list = list.filter(p =>
       p.dest.toLowerCase().includes(dest) ||
@@ -1436,6 +1437,7 @@ function doSearch() {
   const dest = (document.getElementById('searchDest').value || '').toLowerCase().trim();
   const travelers = parseInt(document.getElementById('searchNum').value) || 1;
   const budget = parseFloat(document.getElementById('searchBudget').value) || Infinity;
+  selectedTravelers = travelers;
 
   // Redirect based on traveler count
   if (travelers === 1) {
@@ -1488,9 +1490,11 @@ function hotelCard(hotel) {
 
 function renderHotels(list) {
   const grid = document.getElementById('hotelGrid');
+  const cnt = document.getElementById('hotelCount');
   if (grid) {
     grid.innerHTML = list.map(hotelCard).join('');
   }
+  if (cnt) cnt.textContent = list.length;
 }
 
 function filterHotels() {
@@ -1524,6 +1528,7 @@ function openHotel(id) {
   if (!hotel) return;
 
   currentHotel = hotel;
+  currentPkg = null;
 
   // Populate hotel detail page
   document.getElementById('hotelDetailImg').style.backgroundImage = `url('${hotel.img}')`;
@@ -1550,15 +1555,18 @@ function openHotel(id) {
   const total = discountedPrice + tax;
 
   document.getElementById('hotelDetailPrice').innerHTML = `
+    <div class="price-big">${currencySymbol}${discountedPrice.toLocaleString()}</div>
+    <div class="price-note">per traveler &middot; taxes &amp; fees extra</div>
     <div class="price-breakdown" style="margin-bottom:20px">
-      <div class="price-row"><span>Per night</span><span>${currencySymbol}${discountedPrice.toLocaleString()}</span></div>
+      <div class="price-row"><span>Base price per traveler</span><span>${currencySymbol}${discountedPrice.toLocaleString()}</span></div>
       ${hotel.discount > 0 ? `<div class="price-row"><span>Original price</span><span style="text-decoration: line-through; color: var(--gray-400)">${currencySymbol}${originalPrice.toLocaleString()}</span></div>` : ''}
       <div class="price-row"><span>Taxes & fees (12%)</span><span>${currencySymbol}${tax.toLocaleString()}</span></div>
-      <div class="price-row total"><span>Total per night</span><span>${currencySymbol}${total.toLocaleString()}</span></div>
+      <div class="price-row total"><span>Total per traveler</span><span>${currencySymbol}${total.toLocaleString()}</span></div>
     </div>
     ${hotel.discount > 0 ? `<div class="alert alert-success" style="margin-bottom: 20px">${hotel.discount}% discount applied!</div>` : ''}
-    <button class="btn btn-primary" onclick="navigate('booking')">Book Now</button>
-    <button class="btn btn-outline" onclick="addToCompare(hotel)">Add to Compare</button>`;
+    <button class="btn btn-primary book-card-btn" onclick="navigate('booking')">Book Now</button>
+    <button class="btn btn-outline book-card-btn" onclick="addToCompare(currentHotel)">Add to Compare</button>
+    <div class="book-card-note">Flexible changes available for most destination bookings</div>`;
 
   navigate('hotel-detail');
 }
@@ -1567,9 +1575,12 @@ function openHotel(id) {
 // BOOKING
 // ════════════════════════════════════════════════
 function initBooking() {
-  if (currentPkg) document.getElementById('bkgPackage').value = currentPkg.title;
+  const currentItemName = currentPkg ? currentPkg.title : currentHotel ? currentHotel.name : '';
+  if (currentItemName) document.getElementById('bkgPackage').value = currentItemName;
+  const travelerInput = document.getElementById('bkgTravelers');
+  if (travelerInput) travelerInput.value = selectedTravelers;
   bookingStep = 1;
-  rooms = [{ id: 1, people: 2 }];
+  rooms = [{ id: 1, people: Math.min(15, selectedTravelers) }];
   renderBookingSteps();
   renderRooms();
   updatePaymentSummary();
@@ -1692,24 +1703,33 @@ function toggleBusinessAuthField(roleId, fieldId) {
 }
 
 function updatePaymentSummary() {
-  // Placeholder for payment summary calculation
-  // In a real app, this would calculate taxes, fees, etc.
   const travelers = parseInt(document.getElementById('bkgTravelers').value) || 1;
-  const basePrice = currentPkg ? currentPkg.price : 0;
+  const basePrice = currentPkg
+    ? currentPkg.price
+    : currentHotel
+      ? currentHotel.discountedPrice * 100
+      : 0;
   const subtotal = basePrice * travelers;
   const tax = subtotal * 0.12; // 12% tax
   const total = subtotal + tax;
 
   // Update payment summary elements if they exist
-  const payTravelers = document.getElementById('payTravelers');
+  const payBaseLabel = document.getElementById('payBaseLabel');
   const paySubtotal = document.getElementById('paySubtotal');
   const payTax = document.getElementById('payTax');
   const payTotal = document.getElementById('payTotal');
 
-  if (payTravelers) payTravelers.textContent = travelers;
-  if (paySubtotal) paySubtotal.textContent = '$' + subtotal.toLocaleString();
-  if (payTax) payTax.textContent = '$' + Math.round(tax).toLocaleString();
-  if (payTotal) payTotal.textContent = '$' + Math.round(total).toLocaleString();
+  if (payBaseLabel) payBaseLabel.textContent = `Base price for ${travelers} ${travelers === 1 ? 'traveler' : 'travelers'}`;
+  if (paySubtotal) paySubtotal.textContent = formatPrice(subtotal);
+  if (payTax) payTax.textContent = formatPrice(Math.round(tax));
+  if (payTotal) payTotal.textContent = formatPrice(Math.round(total));
+}
+
+function handleReceiptUpload(input, labelId) {
+  const label = document.getElementById(labelId);
+  if (!label) return;
+  const fileName = input && input.files && input.files[0] ? input.files[0].name : 'No receipt uploaded yet';
+  label.textContent = fileName;
 }
 
 function showGroupCoordinationInfo(feature) {
@@ -1965,10 +1985,40 @@ function showGroupPaymentModal() {
           </div>
           <div class="payment-section">
             <h4>Payment Methods</h4>
-            <div class="method-item">💳 Credit/Debit Cards</div>
-            <div class="method-item">🏦 Bank Transfers</div>
-            <div class="method-item">📱 Digital Wallets</div>
-            <div class="method-item">💰 Cash Payments</div>
+            <div class="payment-tab-wrap">
+              <div class="pill-tabs payment-tabs" id="groupPaymentTabs">
+                <button class="pill-tab active" data-panel="card" onclick="switchPillTab(this, 'groupPaymentTabs')">Credit Card</button>
+                <button class="pill-tab" data-panel="bank" onclick="switchPillTab(this, 'groupPaymentTabs')">Bank Transfer</button>
+                <button class="pill-tab" data-panel="wallet" onclick="switchPillTab(this, 'groupPaymentTabs')">Digital Wallet</button>
+              </div>
+            </div>
+            <div class="payment-panel active" data-panel-group="groupPaymentTabs" data-panel="card">
+              <div class="method-item">Coordinator card payment with instant split tracking</div>
+              <div class="method-item">Supports Visa, Mastercard, and Amex</div>
+            </div>
+            <div class="payment-panel" data-panel-group="groupPaymentTabs" data-panel="bank">
+              <div class="payment-info-card compact">
+                <h4>Bank Transfer Details</h4>
+                <div class="payment-info-grid">
+                  <div><strong>Bank:</strong> Bank of Ceylon</div>
+                  <div><strong>Account:</strong> TravelBooker Pvt Ltd</div>
+                  <div><strong>Number:</strong> 784512369874</div>
+                  <div><strong>SWIFT:</strong> BCEYLKLX</div>
+                </div>
+              </div>
+              <div class="form-grid">
+                <div class="form-field"><label>Transfer Amount</label><input type="number" placeholder="250000" /></div>
+                <div class="form-field"><label>Reference</label><input type="text" placeholder="Group payment ref" /></div>
+                <div class="form-field full"><label>Upload Receipt</label><div class="upload-field"><input type="file" id="groupReceiptInput" class="upload-input" accept=".jpg,.jpeg,.png,.pdf" onchange="handleReceiptUpload(this, 'groupReceiptName')" /><label for="groupReceiptInput" class="upload-dropzone"><span class="upload-btn">Upload Receipt</span><span class="upload-file-name" id="groupReceiptName">No receipt uploaded yet</span></label></div></div>
+              </div>
+            </div>
+            <div class="payment-panel" data-panel-group="groupPaymentTabs" data-panel="wallet">
+              <div class="form-grid">
+                <div class="form-field"><label>Wallet Provider</label><select><option>eZ Cash</option><option>mCash</option><option>PayPal</option></select></div>
+                <div class="form-field"><label>Wallet ID</label><input type="text" placeholder="wallet-id-123" /></div>
+                <div class="form-field full"><label>Transaction Reference</label><input type="text" placeholder="TXN-789456" /></div>
+              </div>
+            </div>
           </div>
           <div class="payment-section">
             <h4>Current Split Status</h4>
@@ -2922,18 +2972,40 @@ function addToCompare(item) {
 
 function updateCompareBar() {
   const bar   = document.getElementById('compareBar');
+  const label = document.querySelector('.compare-label');
   const items = document.getElementById('compareItems');
   const cnt   = document.getElementById('compareCnt');
   const btn   = document.getElementById('compareBtn');
+  const actionBtn = document.getElementById('compareActionBtn');
+  const clearBtn = document.getElementById('compareClearBtn');
 
   if (compareList.length > 0) {
     bar.classList.add('visible');
+    if (label) label.textContent = 'Comparing Packages:';
     items.innerHTML = compareList.map(p => {
       const name = p.title || p.name || 'Item';
       return `<div class="compare-item">${name} <button onclick="removeCompare(${p.id})" aria-label="Remove">&times;</button></div>`;
     }).join('');
     if (cnt) cnt.textContent = compareList.length;
     if (btn) btn.style.display = 'inline-flex';
+    if (actionBtn) {
+      actionBtn.textContent = 'Compare Now';
+      actionBtn.onclick = runCompare;
+    }
+    if (clearBtn) clearBtn.onclick = clearCompare;
+  } else if (hotelCompareList.length > 0) {
+    bar.classList.add('visible');
+    if (label) label.textContent = 'Comparing Destinations:';
+    items.innerHTML = hotelCompareList.map(h => {
+      const name = h.name || 'Destination';
+      return `<div class="compare-item">${name} <button onclick="removeHotelCompare(${h.id})" aria-label="Remove">&times;</button></div>`;
+    }).join('');
+    if (btn) btn.style.display = 'none';
+    if (actionBtn) {
+      actionBtn.textContent = 'Compare Destinations';
+      actionBtn.onclick = runHotelCompare;
+    }
+    if (clearBtn) clearBtn.onclick = clearHotelCompare;
   } else {
     bar.classList.remove('visible');
     if (btn) btn.style.display = 'none';
@@ -2954,8 +3026,8 @@ function updateHotelCompareBar() {
 function removeCompare(id) { compareList = compareList.filter(p => p.id !== id); updateCompareBar(); }
 function clearCompare()    { compareList = []; updateCompareBar(); }
 
-function removeHotelCompare(id) { hotelCompareList = hotelCompareList.filter(h => h.id !== id); updateHotelCompareBar(); }
-function clearHotelCompare()    { hotelCompareList = []; updateHotelCompareBar(); }
+function removeHotelCompare(id) { hotelCompareList = hotelCompareList.filter(h => h.id !== id); updateCompareBar(); }
+function clearHotelCompare()    { hotelCompareList = []; updateCompareBar(); }
 
 function runHotelCompare() {
   if (hotelCompareList.length < 2) { showToast('Select at least 2 hotels to compare'); return; }
@@ -2983,6 +3055,7 @@ function runHotelCompare() {
     return `<tr><td style="padding:10px 14px;font-weight:600;color:var(--gray-600);border-bottom:1px solid var(--gray-100)">${label}</td>${cells}</tr>`;
   }).join('');
 
+  document.getElementById('compareModalTitle').textContent = 'Destination Comparison';
   document.getElementById('compareContent').innerHTML = `
     <table style="width:100%;border-collapse:collapse;font-size:.85rem">
       <thead><tr><th style="text-align:left;padding:10px 14px;border-bottom:2px solid var(--gray-200)">Feature</th>${headerCells}</tr></thead>
@@ -3021,6 +3094,7 @@ function runCompare() {
     return `<tr><td style="padding:10px 14px;font-weight:600;color:var(--gray-600);border-bottom:1px solid var(--gray-100)">${label}</td>${cells}</tr>`;
   }).join('');
 
+  document.getElementById('compareModalTitle').textContent = 'Package Comparison';
   document.getElementById('compareContent').innerHTML = `
     <table style="width:100%;border-collapse:collapse;font-size:.85rem">
       <thead><tr><th style="text-align:left;padding:10px 14px;border-bottom:2px solid var(--gray-200)">Feature</th>${headerCells}</tr></thead>
@@ -3123,6 +3197,11 @@ function switchPillTab(btn, groupId) {
   const group = document.getElementById(groupId);
   if (group) group.querySelectorAll('.pill-tab').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
+  const panel = btn.getAttribute('data-panel');
+  if (!panel) return;
+  document.querySelectorAll(`[data-panel-group="${groupId}"]`).forEach(el => {
+    el.classList.toggle('active', el.getAttribute('data-panel') === panel);
+  });
 }
 
 // ════════════════════════════════════════════════
@@ -3407,3 +3486,4 @@ function updateCancellationPolicy() {
   toggleBusinessAuthField('loginRole', 'loginBusinessNameField');
   toggleBusinessAuthField('signupRole', 'signupBusinessNameField');
 })();
+
