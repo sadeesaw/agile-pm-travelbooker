@@ -1,6 +1,6 @@
 # TravelBooker
 
-TravelBooker is a single-page travel booking platform built with HTML, CSS, and vanilla JavaScript.
+TravelBooker is a travel booking platform built with HTML, CSS, and vanilla JavaScript.
 
 The current version is designed for Sri Lanka domestic travel only. All packages, destinations, hotel options, dashboards, and support flows are centered around travel within Sri Lanka.
 
