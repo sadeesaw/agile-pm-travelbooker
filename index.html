@@ -39,7 +39,6 @@
       <option value="Australia">🇦🇺 Australia (AUD)</option>
       <option value="Canada">🇨🇦 Canada (CAD)</option>
       <option value="Germany">🇩🇪 Germany (EUR)</option>
-      <option value="Japan">🇯🇵 Japan (JPY)</option>
       <option value="Singapore">🇸🇬 Singapore (SGD)</option>
     </select>
   </div>
@@ -261,7 +260,7 @@
           <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
         </div>
         <h4>24/7 Support</h4>
-        <p>Dedicated customer service with multi-language support worldwide</p>
+        <p>Dedicated customer service for travellers exploring Sri Lanka</p>
       </div>
     </div>
   </section>
@@ -275,20 +274,29 @@
       <button class="back-btn light" onclick="navigate('home')">Back to Home</button>
       <div>
         <h2>Tour Packages</h2>
-        <p>Explore <span id="pkgCount">11</span> curated experiences worldwide</p>
+        <p>Explore <span id="pkgCount">11</span> curated experiences across Sri Lanka</p>
       </div>
     </div>
   </div>
   <div class="filters-bar">
     <div class="filter-group">
-      <label for="filterDest">Destination</label>
+      <label for="filterDest">Location</label>
       <select id="filterDest" onchange="filterPackages()">
-        <option value="">All Destinations</option>
-        <option value="Asia">Asia</option>
-        <option value="Europe">Europe</option>
-        <option value="Americas">Americas</option>
-        <option value="Africa">Africa</option>
-        <option value="Oceania">Oceania</option>
+        <option value="">All Locations</option>
+        <option value="Colombo">Colombo</option>
+        <option value="Anuradhapura">Anuradhapura</option>
+        <option value="Dambulla">Dambulla</option>
+        <option value="Sigiriya">Sigiriya</option>
+        <option value="Polonnaruwa">Polonnaruwa</option>
+        <option value="Kandy">Kandy</option>
+        <option value="Nuwara Eliya">Nuwara Eliya</option>
+        <option value="Ella">Ella</option>
+        <option value="Bentota">Bentota</option>
+        <option value="Beruwala">Beruwala</option>
+        <option value="Galle">Galle</option>
+        <option value="Mirissa">Mirissa</option>
+        <option value="Yala">Yala</option>
+        <option value="Udawalawe">Udawalawe</option>
       </select>
     </div>
     <div class="filter-group">
@@ -825,7 +833,7 @@
         <h3>1. Introduction</h3>
         <p>TravelBooker ("we", "us", or "our") is committed to protecting your personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our platform and services.</p>
         <h3>2. Information We Collect</h3>
-        <p>We collect information you provide directly to us, including: name, email address, phone number, passport details, payment information, and travel preferences. We also collect information automatically, such as IP addresses, browser type, device information, and browsing patterns on our platform.</p>
+        <p>We collect information you provide directly to us, including: name, email address, phone number, identification details, payment information, and travel preferences. We also collect information automatically, such as IP addresses, browser type, device information, and browsing patterns on our platform.</p>
         <h3>3. How We Use Your Information</h3>
         <p>We use collected information to: process and manage your bookings, send booking confirmations and travel updates, personalise your experience and recommend packages, improve our services and platform, comply with legal obligations, and prevent fraud and abuse.</p>
         <h3>4. Information Sharing</h3>
@@ -847,13 +855,13 @@
         <h3>1. Acceptance of Terms</h3>
         <p>By accessing or using TravelBooker's platform, you agree to be bound by these Terms and Conditions. If you do not agree, please do not use our services.</p>
         <h3>2. Booking and Payments</h3>
-        <p>All bookings are subject to availability and confirmation. Prices are quoted in USD and are inclusive of stated fees. Payment is required at time of booking. We accept major credit cards, bank transfers, and selected digital wallets.</p>
+        <p>All bookings are subject to availability and confirmation. Prices are quoted in LKR and are inclusive of stated fees. Payment is required at time of booking. We accept major credit cards, bank transfers, and selected digital wallets.</p>
         <h3>3. Cancellations and Refunds</h3>
         <p>Free cancellation is available up to 14 days before departure for most packages. Cancellations between 7 and 14 days before departure incur a 25% fee. Cancellations within 7 days of departure are non-refundable. Specific package terms may vary.</p>
         <h3>4. Travel Documents</h3>
-        <p>You are responsible for ensuring you hold valid travel documents including passports and visas. TravelBooker is not liable for denied entry resulting from inadequate documentation.</p>
+        <p>You are responsible for providing any identification or guest details required for hotel check-in or regulated activities. TravelBooker is not liable for denied service resulting from inaccurate guest information.</p>
         <h3>5. Changes to Bookings</h3>
-        <p>Date changes are permitted up to 30 days before departure, subject to availability and a $50 administration fee. Name changes are not permitted after booking confirmation.</p>
+        <p>Date changes are permitted up to 30 days before departure, subject to availability and a LKR 15,000 administration fee. Name changes are not permitted after booking confirmation.</p>
         <h3>6. Limitation of Liability</h3>
         <p>TravelBooker acts as an agent for travel providers. Our maximum liability to you in any circumstance shall not exceed the total amount paid for the relevant booking.</p>
         <h3>7. Governing Law</h3>
@@ -1051,7 +1059,7 @@
         </div>
         <span class="logo-text footer-logo-text">Travel<span>Booker</span></span>
       </div>
-      <p>Sri Lanka's leading online travel booking platform, connecting travelers, travel agents, and hotels since 2026. A product of CodeGen International.</p>
+      <p>Sri Lanka's leading online travel booking platform, connecting travelers, travel agents, and hotels since 2026. Built locally for Sri Lanka travel planning.</p>
       <div class="footer-socials">
         <a href="#" class="social-btn" aria-label="Facebook">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
@@ -1124,7 +1132,7 @@
     <button onclick="toggleAI()" aria-label="Close chat">&#10005;</button>
   </div>
   <div class="ai-messages" id="aiMessages">
-    <div class="ai-msg bot"><div class="bubble">Ayubowan! I am your AI travel assistant. Ask me about destinations, packages, visa requirements, budget planning, or anything travel-related.</div></div>
+    <div class="ai-msg bot"><div class="bubble">Ayubowan! I am your AI travel assistant. Ask me about Sri Lanka destinations, package details, local transport, budget planning, or anything travel-related.</div></div>
   </div>
   <div class="ai-input-area">
     <input type="text" id="aiInput" placeholder="Ask me anything..." aria-label="Chat input" onkeydown="if(event.key==='Enter')sendAI()" />
@@ -1164,6 +1172,7 @@
 <script src="app.js"></script>
 </body>
 </html>
+
 
 
 

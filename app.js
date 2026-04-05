@@ -11,9 +11,10 @@
 const PACKAGES = [
   {
     id: 1,
-    title: 'Cultural & Heritage',
+    title: 'Sacred City Retreat',
     region: 'Asia',
     dest: 'Sri Lanka',
+    locations: ['Colombo', 'Anuradhapura', 'Sigiriya', 'Kandy'],
     duration: 6,
     price: 115000,
     originalPrice: 140000,
@@ -28,11 +29,11 @@ const PACKAGES = [
     ],
     highlights: ['Anuradhapura Sacred City', 'Sigiriya Rock Fortress', 'Kandy Cultural Sites'],
     itinerary: [
-      { day: 'Day 1', title: 'Colombo Arrival', desc: 'Welcome to Sri Lanka, transfer to hotel.' },
+      { day: 'Day 1', title: 'Colombo Check-in', desc: 'Meet your local host and settle into your Colombo hotel.' },
       { day: 'Day 2', title: 'Anuradhapura', desc: 'Explore ancient ruins and sacred sites.' },
       { day: 'Day 3', title: 'Sigiriya', desc: 'Climb the rock fortress and enjoy the views.' },
       { day: 'Day 4-5', title: 'Kandy', desc: 'Visit temples and cultural sites.' },
-      { day: 'Day 6', title: 'Departure', desc: 'Transfer to airport.' }
+      { day: 'Day 6', title: 'Return Transfer', desc: 'Comfortable road transfer back to Colombo or your next local stop.' }
     ],
     reviewsList: [
       { author: 'John D.', rating: 5, date: 'March 2025', text: 'Amazing cultural experience. Sigiriya was breathtaking.' },
@@ -44,6 +45,7 @@ const PACKAGES = [
     title: 'Beach Escape',
     region: 'Asia',
     dest: 'Sri Lanka',
+    locations: ['Colombo', 'Bentota', 'Galle'],
     duration: 5,
     price: 165000,
     originalPrice: 195000,
@@ -61,7 +63,7 @@ const PACKAGES = [
       { day: 'Day 1', title: 'Colombo to Bentota', desc: 'Transfer and relax on the beach.' },
       { day: 'Day 2-3', title: 'Bentota Activities', desc: 'Water sports and beach time.' },
       { day: 'Day 4', title: 'Galle', desc: 'Explore the fort and town.' },
-      { day: 'Day 5', title: 'Departure', desc: 'Transfer to airport.' }
+      { day: 'Day 5', title: 'Return Transfer', desc: 'Road transfer back to Colombo after your coastal stay.' }
     ],
     reviewsList: [
       { author: 'Mike R.', rating: 5, date: 'April 2025', text: 'Perfect beach getaway. Bentota was stunning.' },
@@ -73,6 +75,7 @@ const PACKAGES = [
     title: 'Hill Country Escape',
     region: 'Asia',
     dest: 'Sri Lanka',
+    locations: ['Colombo', 'Kandy', 'Nuwara Eliya', 'Ella'],
     duration: 6,
     price: 135000,
     originalPrice: 165000,
@@ -91,7 +94,7 @@ const PACKAGES = [
       { day: 'Day 2', title: 'Kandy to Nuwara Eliya', desc: 'Visit tea plantations.' },
       { day: 'Day 3-4', title: 'Nuwara Eliya & Ella', desc: 'Scenic views and hikes.' },
       { day: 'Day 5', title: 'Ella Exploration', desc: 'Nine Arches Bridge and more.' },
-      { day: 'Day 6', title: 'Departure', desc: 'Transfer to airport.' }
+      { day: 'Day 6', title: 'Return Transfer', desc: 'Scenic return transfer from Ella to your onward Sri Lanka destination.' }
     ],
     reviewsList: [
       { author: 'David S.', rating: 5, date: 'May 2025', text: 'Breathtaking landscapes. The train ride was unforgettable.' },
@@ -100,9 +103,10 @@ const PACKAGES = [
   },
   {
     id: 4,
-    title: 'Cultural & Heritage',
+    title: 'Lion Rock Escape',
     region: 'Asia',
     dest: 'Sri Lanka',
+    locations: ['Colombo', 'Dambulla', 'Sigiriya', 'Polonnaruwa'],
     duration: 4,
     price: 140000,
     originalPrice: 170000,
@@ -120,7 +124,7 @@ const PACKAGES = [
       { day: 'Day 1', title: 'Colombo to Dambulla', desc: 'Transfer and visit Dambulla Cave Temples.' },
       { day: 'Day 2', title: 'Sigiriya', desc: 'Climb the legendary rock fortress.' },
       { day: 'Day 3', title: 'Polonnaruwa', desc: 'Explore ancient ruins and history.' },
-      { day: 'Day 4', title: 'Departure', desc: 'Transfer to airport.' }
+      { day: 'Day 4', title: 'Return Transfer', desc: 'Road transfer back to Colombo with optional stops en route.' }
     ],
     reviewsList: [
       { author: 'Tom H.', rating: 5, date: 'June 2025', text: 'Sigiriya was incredible. The views from the top are breathtaking.' },
@@ -132,6 +136,7 @@ const PACKAGES = [
     title: 'Luxury Escape',
     region: 'Asia',
     dest: 'Sri Lanka',
+    locations: ['Colombo', 'Sigiriya', 'Galle'],
     duration: 5,
     price: 185000,
     originalPrice: 220000,
@@ -146,10 +151,10 @@ const PACKAGES = [
     ],
     highlights: ['Sigiriya', 'Galle', 'Luxury Accommodations', 'Spa Treatments'],
     itinerary: [
-      { day: 'Day 1', title: 'Colombo', desc: 'Luxury arrival and relaxation.' },
+      { day: 'Day 1', title: 'Colombo Welcome Stay', desc: 'Private chauffeur meet-and-greet followed by a luxury city stay.' },
       { day: 'Day 2-3', title: 'Sigiriya & Cultural Sites', desc: 'Private tours and luxury stays.' },
       { day: 'Day 4', title: 'Galle', desc: 'Explore the fort and beach.' },
-      { day: 'Day 5', title: 'Departure', desc: 'Luxury transfer to airport.' }
+      { day: 'Day 5', title: 'Luxury Return Transfer', desc: 'Private luxury vehicle transfer back to Colombo or your next Sri Lanka hotel.' }
     ],
     reviewsList: [
       { author: 'Sophia L.', rating: 5, date: 'July 2025', text: 'Absolute luxury. Every detail was perfect.' },
@@ -161,6 +166,7 @@ const PACKAGES = [
     title: 'Honeymoon Package',
     region: 'Asia',
     dest: 'Sri Lanka',
+    locations: ['Colombo', 'Ella', 'Mirissa'],
     duration: 6,
     price: 152000,
     originalPrice: 180000,
@@ -190,6 +196,7 @@ const PACKAGES = [
     title: 'Wellness Retreat',
     region: 'Asia',
     dest: 'Sri Lanka',
+    locations: ['Colombo', 'Bentota', 'Beruwala'],
     duration: 5,
     price: 105000,
     originalPrice: 130000,
@@ -206,7 +213,7 @@ const PACKAGES = [
     itinerary: [
       { day: 'Day 1', title: 'Colombo to Bentota', desc: 'Arrival and initial treatment.' },
       { day: 'Day 2-4', title: 'Wellness Program', desc: 'Daily treatments and yoga.' },
-      { day: 'Day 5', title: 'Departure', desc: 'Rejuvenated farewell.' }
+      { day: 'Day 5', title: 'Return Transfer', desc: 'Wellness wrap-up and return road transfer to Colombo.' }
     ],
     reviewsList: [
       { author: 'Rachel G.', rating: 5, date: 'September 2025', text: 'Transformative experience. Felt completely renewed.' },
@@ -218,6 +225,7 @@ const PACKAGES = [
     title: 'Scenic Rail Journey',
     region: 'Asia',
     dest: 'Sri Lanka',
+    locations: ['Colombo', 'Kandy', 'Ella'],
     duration: 5,
     price: 155000,
     originalPrice: 185000,
@@ -235,7 +243,7 @@ const PACKAGES = [
       { day: 'Day 1', title: 'Colombo to Kandy', desc: 'Train journey and exploration.' },
       { day: 'Day 2-3', title: 'Kandy to Ella', desc: 'Iconic train ride and sights.' },
       { day: 'Day 4', title: 'Ella Exploration', desc: 'Hikes and views.' },
-      { day: 'Day 5', title: 'Departure', desc: 'Transfer to airport.' }
+      { day: 'Day 5', title: 'Return Transfer', desc: 'Return transfer after your rail journey through the hill country.' }
     ],
     reviewsList: [
       { author: 'Nina S.', rating: 5, date: 'October 2025', text: 'The train ride was magical. Stunning scenery.' },
@@ -247,6 +255,7 @@ const PACKAGES = [
     title: 'Corporate Travel',
     region: 'Asia',
     dest: 'Sri Lanka',
+    locations: ['Colombo', 'Kandy', 'Bentota'],
     duration: 3,
     price: 280000,
     originalPrice: 320000,
@@ -257,13 +266,13 @@ const PACKAGES = [
     desc: 'Corporate Team Retreat: Team building and relaxation in Sri Lanka.',
     includes: [
       '5-star conference facilities', 'All meals & beverages', 'Coach transfer, AV-equipped',
-      'Team building activities', 'Airport group transfer'
+      'Team building activities', 'Group road transfers'
     ],
     highlights: ['Kandy', 'Bentota', 'Team Building', 'Conferences'],
     itinerary: [
       { day: 'Day 1', title: 'Colombo to Kandy', desc: 'Arrival and team activities.' },
       { day: 'Day 2', title: 'Kandy to Bentota', desc: 'More activities and relaxation.' },
-      { day: 'Day 3', title: 'Departure', desc: 'Group transfer to airport.' }
+      { day: 'Day 3', title: 'Return Transfer', desc: 'Coordinated group road transfer back to Colombo.' }
     ],
     reviewsList: [
       { author: 'Corporate Team A', rating: 5, date: 'November 2025', text: 'Excellent team retreat. Productive and fun.' },
@@ -275,6 +284,7 @@ const PACKAGES = [
     title: 'Corporate Leadership Retreat',
     region: 'Asia',
     dest: 'Sri Lanka',
+    locations: ['Colombo', 'Sigiriya', 'Dambulla'],
     duration: 4,
     price: 390000,
     originalPrice: 450000,
@@ -291,7 +301,7 @@ const PACKAGES = [
     itinerary: [
       { day: 'Day 1', title: 'Colombo to Sigiriya', desc: 'Arrival and initial workshop.' },
       { day: 'Day 2-3', title: 'Workshops & Excursions', desc: 'Leadership sessions and cultural tours.' },
-      { day: 'Day 4', title: 'Departure', desc: 'Luxury transfer to airport.' }
+      { day: 'Day 4', title: 'Return Transfer', desc: 'Executive road transfer back to Colombo after the retreat.' }
     ],
     reviewsList: [
       { author: 'Executive Group C', rating: 5, date: 'December 2025', text: 'Inspiring retreat. Great for leadership development.' },
@@ -303,6 +313,7 @@ const PACKAGES = [
     title: 'Wildlife Safari',
     region: 'Asia',
     dest: 'Sri Lanka',
+    locations: ['Colombo', 'Yala', 'Udawalawe'],
     duration: 4,
     price: 140000,
     originalPrice: 170000,
@@ -320,7 +331,7 @@ const PACKAGES = [
       { day: 'Day 1', title: 'Colombo to Yala', desc: 'Transfer and evening safari.' },
       { day: 'Day 2', title: 'Yala Safari', desc: 'Full day wildlife watching.' },
       { day: 'Day 3', title: 'Udawalawe', desc: 'Elephant safari.' },
-      { day: 'Day 4', title: 'Departure', desc: 'Transfer to airport.' }
+      { day: 'Day 4', title: 'Return Transfer', desc: 'Return transfer from the safari circuit to Colombo or your next local stop.' }
     ],
     reviewsList: [
       { author: 'Tom H.', rating: 5, date: 'June 2025', text: 'Saw leopards and elephants. Incredible experience.' },
@@ -650,7 +661,6 @@ const CURRENCY_RATES = {
   'Australia': { code: 'AUD', symbol: 'A$', rate: 0.0045 },
   'Canada': { code: 'CAD', symbol: 'C$', rate: 0.0040 },
   'Germany': { code: 'EUR', symbol: '€', rate: 0.0027 },
-  'Japan': { code: 'JPY', symbol: '¥', rate: 0.21 },
   'Singapore': { code: 'SGD', symbol: 'S$', rate: 0.0040 }
 };
 
@@ -665,7 +675,10 @@ function changeCurrency(country) {
   
   // Update currency selector display
   const selector = document.getElementById('currencySelector');
-  if (selector) selector.value = country;
+  if (selector) {
+    selector.value = country;
+    syncCustomSelect(selector);
+  }
   
   showToast(`Currency changed to ${currentCurrency}`);
 }
@@ -705,7 +718,7 @@ function updateAllPrices() {
   }
 }
 let bookingHistory = [
-  { ref: 'TB-2025-AB3F2', pkg: 'Cultural & Heritage',         date: 'Jan 15, 2025', status: 'Completed', amount: 115000, client: 'Sarah Anderson', location: 'Colombo, Sri Lanka' },
+  { ref: 'TB-2025-AB3F2', pkg: 'Sacred City Retreat',         date: 'Jan 15, 2025', status: 'Completed', amount: 115000, client: 'Sarah Anderson', location: 'Colombo, Sri Lanka' },
   { ref: 'TB-2025-X9KLM', pkg: 'Beach Escape',                date: 'Mar 20, 2025', status: 'Upcoming',  amount: 165000, client: 'TechCorp Solutions', location: 'Colombo, Sri Lanka' },
   { ref: 'TB-2025-QR7TY', pkg: 'Hill Country Escape',         date: 'Feb 10, 2025', status: 'Cancelled', amount: 135000, client: 'Mike Johnson', location: 'Kandy, Sri Lanka' },
   { ref: 'TB-2025-MN8PL', pkg: 'Wildlife Safari',             date: 'Dec 5, 2024',  status: 'Completed', amount: 140000, client: 'Priya & Raj Patel', location: 'Yala, Sri Lanka' },
@@ -715,12 +728,12 @@ let bookingHistory = [
   { ref: 'TB-2025-RT3YU', pkg: 'Scenic Rail Journey',         date: 'Aug 15, 2024', status: 'Completed', amount: 155000, client: 'Chaminda Perera', location: 'Ella, Sri Lanka' },
   { ref: 'TB-2025-WE8OP', pkg: 'Corporate Travel',            date: 'Jul 3, 2024',  status: 'Completed', amount: 280000, client: 'Rashika de Silva', location: 'Kandy, Sri Lanka' },
   { ref: 'TB-2025-ZX5CV', pkg: 'Corporate Leadership Retreat', date: 'Jun 12, 2024', status: 'Completed', amount: 390000, client: 'Global Marketing Inc', location: 'Sigiriya, Sri Lanka' },
-  { ref: 'TB-2025-BN7MK', pkg: 'Cultural & Heritage',         date: 'May 28, 2024', status: 'Completed', amount: 115000, client: 'Sunil Jayawardena', location: 'Colombo, Sri Lanka' },
+  { ref: 'TB-2025-BN7MK', pkg: 'Sacred City Retreat',         date: 'May 28, 2024', status: 'Completed', amount: 115000, client: 'Sunil Jayawardena', location: 'Colombo, Sri Lanka' },
   { ref: 'TB-2025-PL9OI', pkg: 'Beach Escape',                date: 'Apr 10, 2024', status: 'Completed', amount: 165000, client: 'Nordic Enterprises', location: 'Bentota, Sri Lanka' }
 ];
 
 const AGENT_CLIENTS = [
-  { id: 'sarah-anderson', name: 'Sarah Anderson', contact: 'sarah@email.com', phone: '+1 555-0123', type: 'Family', lastTrip: 'Cultural & Heritage', totalSpent: 'Rs. 345,000', status: 'Active', details: '4 travellers; 30% repeat-booking rate' },
+  { id: 'sarah-anderson', name: 'Sarah Anderson', contact: 'sarah@email.com', phone: '+1 555-0123', type: 'Family', lastTrip: 'Sacred City Retreat', totalSpent: 'Rs. 345,000', status: 'Active', details: '4 travellers; 30% repeat-booking rate' },
   { id: 'techcorp-solutions', name: 'TechCorp Solutions', contact: 'travel@techcorp.com', phone: '+1 555-0456', type: 'Corporate', lastTrip: 'Corporate Travel', totalSpent: 'Rs. 1,960,000', status: 'Active', details: '45 employees; 12 bookings this year' },
   { id: 'mike-johnson', name: 'Mike Johnson', contact: 'mike@corp.com', phone: '+1 555-0789', type: 'Business', lastTrip: 'Wildlife Safari', totalSpent: 'Rs. 420,000', status: 'Planning', details: 'Solo executive traveler; prefers premium packages' },
   { id: 'priya-raj-patel', name: 'Priya & Raj Patel', contact: 'priya@biz.com', phone: '+1 555-0321', type: 'Family', lastTrip: 'Honeymoon Package', totalSpent: 'Rs. 760,000', status: 'Active', details: 'Couple+2 children; high interest in Sri Lanka adventures' },
@@ -802,6 +815,9 @@ function navigate(pageId) {
   if (targetId === 'individual') renderIndividualPackages();
   if (targetId === 'family')    renderFamilyPackages();
   if (targetId === 'group')     renderGroupPackages();
+
+  initializeCustomSelects(el || document);
+  syncCustomSelects(el || document);
 }
 
 // Handle browser back/forward
@@ -873,30 +889,30 @@ function renderAbout() {
     <div class="about-split">
       <div class="about-text">
         <h2>Where luxury meets local authenticity</h2>
-        <p>TravelBooker is a premium travel platform designed for discerning explorers. We combine curated 5-star experiences with sustainable, locally-led adventures. From private villa retreats to eco-conscious wildlife safaris, every itinerary is crafted with transparency and unforgettable moments in mind.</p>
-        <p>Our heritage starts in Sri Lanka, and our vision is global: to elevate travel as a force for community impact, cultural respect, and personal transformation. We ship responsible tourism practices into every booking, offering 24/7 concierge support and advanced AI planning technology.</p>
+        <p>TravelBooker is a Sri Lanka-focused travel platform built for anyone exploring the island, from local weekend travellers to international guests booking domestic tours. We combine curated stays, trusted transport partners, and locally-led experiences into one clear booking flow.</p>
+        <p>Every itinerary in TravelBooker is designed around Sri Lanka's real strengths: cultural heritage, wildlife, beaches, wellness escapes, scenic rail journeys, and hill country stays. We work with local hotels, drivers, guides, and hosts to keep every booking grounded in the island.</p>
       </div>
       <div class="about-image"></div>
     </div>
     <div class="info-section">
       <h3>Our Story</h3>
-      <p>TravelBooker was founded in 2026 by a group of passionate travelers who are also university students. We were frustrated with the fragmented and impersonal experience of booking travel online. We believe that planning a journey should be as exciting as the journey itself. Starting with a small team of five in Sri Lanka, we have grown to serve over 98,000 travelers across 180 destinations worldwide. Our AI-powered platform combines the warmth of a personal travel agent with the scale and convenience of modern technology.</p>
+      <p>TravelBooker was founded in 2026 by a small Sri Lankan team that wanted domestic trip planning to feel simpler, clearer, and more premium. Instead of sending travellers across dozens of disconnected websites, we brought packages, stays, transport, and support into one local-first platform.</p>
     </div>
     <div class="info-section">
       <h3>Our Values</h3>
       <div class="info-grid">
         <div class="info-card"><h4>Responsible Travel</h4><p>We partner exclusively with operators who adhere to sustainable tourism practices and fair pay for local guides.</p></div>
-        <div class="info-card"><h4>Radical Transparency</h4><p>No hidden fees, ever. Every price you see is fully inclusive. We publish our margin on every booking.</p></div>
+        <div class="info-card"><h4>Radical Transparency</h4><p>No hidden fees. Every price reflects the local accommodation, transport, and activity inclusions shown in the trip.</p></div>
         <div class="info-card"><h4>People First</h4><p>Our AI assists, but our expert human team is always available. Real people, real answers, any time.</p></div>
-        <div class="info-card"><h4>Local Impact</h4><p>Over 80% of our packages use local accommodation, local guides, and local restaurants wherever possible.</p></div>
+        <div class="info-card"><h4>Local Impact</h4><p>Over 80% of our packages use local accommodation, guides, and transport partners wherever possible.</p></div>
       </div>
     </div>
     <div class="info-section">
       <h3>By the Numbers</h3>
       <div class="info-grid">
-        <div class="info-card"><h4>98,000+</h4><p>Happy travellers who have booked through TravelBooker since 2026</p></div>
-        <div class="info-card"><h4>180+</h4><p>Destinations across every continent, curated by our expert team</p></div>
-        <div class="info-card"><h4>4,200+</h4><p>Unique tour packages, regularly refreshed and quality-checked</p></div>
+        <div class="info-card"><h4>98,000+</h4><p>Guest nights and trip enquiries supported across Sri Lanka since launch</p></div>
+        <div class="info-card"><h4>15+</h4><p>Key Sri Lanka destinations and hotel zones actively supported on the platform</p></div>
+        <div class="info-card"><h4>11</h4><p>Active Sri Lanka package collections maintained by our local operations team</p></div>
         <div class="info-card"><h4>4.8 / 5</h4><p>Average customer satisfaction rating across all completed bookings</p></div>
       </div>
     </div>`;
@@ -907,26 +923,26 @@ function renderCareers() {
     <button class="back-btn" onclick="navigate('home')">Back to Home</button>
     <div class="info-hero">
       <h1>Join Our Team</h1>
-      <p>Help us build the future of travel. We are a team of explorers, builders, and dreamers.</p>
+      <p>Help us build the best domestic travel platform for Sri Lanka.</p>
     </div>
     <div class="info-section">
       <h3>Why Work at TravelBooker</h3>
       <div class="info-grid">
-        <div class="info-card"><h4>Annual Travel Credit</h4><p>Every employee receives $3,000 per year to use on TravelBooker packages. We practise what we preach.</p></div>
-        <div class="info-card"><h4>Remote First</h4><p>Work from anywhere in the world. We have team members across 14 countries with quarterly in-person gatherings.</p></div>
-        <div class="info-card"><h4>Competitive Salaries</h4><p>We benchmark against top-quartile industry salaries and offer equity to every employee.</p></div>
-        <div class="info-card"><h4>Learning Budget</h4><p>$1,500 per year for conferences, courses, and books. We invest in your growth.</p></div>
+        <div class="info-card"><h4>Annual Travel Credit</h4><p>Every employee receives a Sri Lanka travel credit to experience our local stays and packages first-hand.</p></div>
+        <div class="info-card"><h4>Flexible Work</h4><p>Hybrid-friendly roles with collaboration hubs in Colombo and regular field visits around the island.</p></div>
+        <div class="info-card"><h4>Competitive Salaries</h4><p>We benchmark against strong local market rates and reward teams that improve guest experience.</p></div>
+        <div class="info-card"><h4>Learning Budget</h4><p>Annual funding for courses, certifications, language learning, and hospitality training.</p></div>
       </div>
     </div>
     <div class="info-section">
       <h3>Open Positions</h3>
-      <div class="faq-item"><div class="faq-q">Senior Product Designer — Remote<span>London / Remote</span></div><div class="faq-a">Lead design across our consumer booking experience and AI assistant interfaces. 5+ years experience required. Salary: £80k–£100k.</div></div>
-      <div class="faq-item"><div class="faq-q">Senior Backend Engineer — Remote<span>Remote</span></div><div class="faq-a">Build and scale our core booking infrastructure. Node.js, PostgreSQL, AWS. 4+ years experience. Salary: $120k–$150k.</div></div>
-      <div class="faq-item"><div class="faq-q">Travel Content Curator — Various Regions<span>Multiple Locations</span></div><div class="faq-a">Research, test, and curate new tour packages in your region. Must be based in and have deep knowledge of Asia, Europe, or the Americas.</div></div>
-      <div class="faq-item"><div class="faq-q">Customer Experience Lead<span>London, UK</span></div><div class="faq-a">Lead our growing CX team and ensure every traveller has an exceptional experience from booking to return. £55k–£70k.</div></div>
+      <div class="faq-item"><div class="faq-q">Product Designer<span>Colombo / Hybrid</span></div><div class="faq-a">Shape the booking experience for Sri Lanka packages, hotel discovery, and guest dashboards. 3+ years experience preferred.</div></div>
+      <div class="faq-item"><div class="faq-q">Operations Coordinator<span>Kandy / Colombo</span></div><div class="faq-a">Coordinate local suppliers, departure schedules, and guest support for domestic trips across the island.</div></div>
+      <div class="faq-item"><div class="faq-q">Travel Content Curator<span>Island-wide</span></div><div class="faq-a">Create accurate destination guides, package copy, and itinerary updates for Sri Lanka-based experiences.</div></div>
+      <div class="faq-item"><div class="faq-q">Customer Experience Lead<span>Colombo</span></div><div class="faq-a">Lead our local support team and improve every touchpoint from booking confirmation to post-trip follow-up.</div></div>
     </div>
     <div style="text-align:center;margin-top:32px">
-      <button class="btn btn-primary" onclick="showToast('Application portal opening — careers@travelbooker.com')">Apply Now</button>
+      <button class="btn btn-primary" onclick="showToast('Application portal opening - careers@travelbooker.com')">Apply Now</button>
     </div>`;
 }
 
@@ -996,9 +1012,9 @@ function renderHelp() {
       <h3>Quick Actions</h3>
       <div class="info-grid">
         <div class="info-card" style="cursor:pointer" onclick="navigate('dashboard')"><h4>Manage Booking</h4><p>View, modify, or cancel an existing booking from your dashboard.</p></div>
-        <div class="info-card" style="cursor:pointer" onclick="navigate('info-faq')"><h4>Frequently Asked Questions</h4><p>Answers to the most common questions about bookings, payments, and travel.</p></div>
+        <div class="info-card" style="cursor:pointer" onclick="navigate('info-faq')"><h4>Frequently Asked Questions</h4><p>Answers to the most common questions about bookings, payments, and local travel.</p></div>
         <div class="info-card" style="cursor:pointer" onclick="navigate('info-cancel')"><h4>Cancellation Policy</h4><p>Understand your refund options and cancellation windows.</p></div>
-        <div class="info-card" style="cursor:pointer" onclick="openAI()"><h4>Ask the AI Assistant</h4><p>Get instant answers about destinations, visa requirements, and packages.</p></div>
+        <div class="info-card" style="cursor:pointer" onclick="openAI()"><h4>Ask the AI Assistant</h4><p>Get instant answers about Sri Lanka destinations, package details, and budgeting.</p></div>
       </div>
     </div>
     <div class="info-section">
@@ -1013,14 +1029,14 @@ function renderHelp() {
 
 function renderFaq() {
   const faqs = [
-    { q: 'How do I modify a booking?', a: 'Log in to your Dashboard, navigate to "My Bookings" and select the booking you wish to modify. Date changes are permitted up to 30 days before departure for a $50 administration fee.' },
+    { q: 'How do I modify a booking?', a: 'Log in to your Dashboard, open "My Bookings" and select the trip you want to update. Date changes can usually be requested up to 30 days before the trip, subject to availability and supplier confirmation.' },
     { q: 'What payment methods do you accept?', a: 'We accept all major credit and debit cards (Visa, Mastercard, Amex), bank transfers, Apple Pay, Google Pay, and PayPal. All payments are secured by 256-bit SSL encryption via Stripe.' },
-    { q: 'Are flights included in the package price?', a: 'Flights are not included unless explicitly stated. Our packages cover accommodation, activities, transfers, and meals as described. We partner with major airlines if you need help booking flights.' },
-    { q: 'What is the group discount?', a: 'Groups of 10 or more travelers receive a 10% discount. Groups of 20 or more receive 15% off. Corporate groups may be eligible for additional discounts — contact our corporate team.' },
+    { q: 'What is included in the package price?', a: 'Our package pricing is built around Sri Lanka travel services only: accommodation, local transport, activities, and meals listed in the itinerary. Package details always show exactly what is included.' },
+    { q: 'What is the group discount?', a: 'Groups of 10 or more travelers receive a 10% discount. Groups of 20 or more receive 15% off. Corporate groups may be eligible for additional discounts - contact our corporate team.' },
     { q: 'Can I travel solo?', a: 'Absolutely. All packages are available for solo travellers. We offer a small single supplement for certain packages that would otherwise require sharing. Solo traveller groups can also be arranged.' },
-    { q: 'What travel insurance do you recommend?', a: 'We strongly recommend comprehensive travel insurance covering medical evacuation, cancellation, and personal belongings. We partner with AXA and Allianz — you can add insurance at checkout.' },
-    { q: 'How far in advance should I book?', a: 'We recommend booking at least 3 months in advance for peak season travel (July-August, December-January). Seasonal packages such as the Japan Blossom Trail sell out 4-6 months ahead.' },
-    { q: 'Are visas included?', a: 'Visa assistance is included for all packages — we provide documentation templates and submission guidance. However, visa fees are the traveller\'s responsibility. Some nationalities may require additional processing time.' }
+    { q: 'What travel insurance do you recommend?', a: 'For domestic travel within Sri Lanka, we recommend cover for cancellations, medical emergencies, and personal belongings, especially for longer stays or adventure activities.' },
+    { q: 'How far in advance should I book?', a: 'For peak Sri Lanka travel periods, booking 4 to 8 weeks ahead is ideal. Long weekends, school holidays, and festive periods often sell out fastest.' },
+    { q: 'Do I need any special travel documents?', a: 'For domestic travel within Sri Lanka, guests usually only need the identification required by their hotel or payment method. We will clearly list any property-specific requirements before checkout.' }
   ];
   return `
     <button class="back-btn" onclick="navigate('home')">Back to Home</button>
@@ -1059,40 +1075,36 @@ function renderCancel() {
     </div>
     <div class="info-section">
       <h3>How to Cancel</h3>
-      <p>Log in to your Dashboard, select "My Bookings", and click "Cancel Booking" on the relevant booking. You will receive confirmation and your refund within 5–10 business days to your original payment method.</p>
+      <p>Log in to your Dashboard, select "My Bookings", and click "Cancel Booking" on the relevant booking. You will receive confirmation and your refund within 5-10 business days to your original payment method.</p>
     </div>
     <div class="info-section">
       <h3>Exceptions</h3>
-      <p>Certain premium and seasonal packages (e.g. Japan Cherry Blossom, Serengeti Migration season) have specific cancellation terms stated at the time of booking. TravelBooker may offer a full refund or rebook at no charge in the event of significant itinerary changes or natural disasters.</p>
+      <p>Certain peak-season Sri Lanka packages, festival departures, and limited-capacity wildlife stays may have specific cancellation terms shown at the time of booking. TravelBooker may offer a refund or local rebooking support if major weather or transport disruptions affect the itinerary.</p>
       ${isAdmin ? `<div style="margin-top:20px"><button class="btn btn-outline" onclick="updateCancellationPolicy()">Update Policy</button></div>` : ''}
     </div>`;
 }
 
 function renderDestinations() {
-  const dests = [
-    { name: 'Bali, Indonesia', img: 'https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=600&q=70', count: 14, tag: 'Popular' },
-    { name: 'Amalfi Coast, Italy', img: 'https://images.unsplash.com/photo-1533104816931-20fa691ff6ca?w=600&q=70', count: 8, tag: 'Hot' },
-    { name: 'Tokyo, Japan', img: 'https://images.unsplash.com/photo-1545569341-9eb8b30979d9?w=600&q=70', count: 11, tag: 'Trending' },
-    { name: 'Serengeti, Tanzania', img: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?w=600&q=70', count: 6, tag: 'Wildlife' },
-    { name: 'Maldives', img: 'https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=600&q=70', count: 9, tag: 'Luxury' },
-    { name: 'Patagonia', img: 'https://images.unsplash.com/photo-1501854140801-50d01698950b?w=600&q=70', count: 5, tag: 'Adventure' },
-    { name: 'Morocco', img: 'https://images.unsplash.com/photo-1548013146-72479768bada?w=600&q=70', count: 7, tag: 'Culture' },
-    { name: 'New Zealand', img: 'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=600&q=70', count: 10, tag: 'Scenic' },
-  ];
+  const dests = HOTELS.slice(0, 8).map(hotel => ({
+    name: hotel.location,
+    img: hotel.img,
+    count: PACKAGES.filter(pkg => packageMatchesSearch(pkg, hotel.location)).length,
+    tag: hotel.category
+  }));
   return `
     <button class="back-btn" onclick="navigate('home')">Back to Home</button>
-    <div class="info-hero"><h1>Explore Destinations</h1><p>180+ destinations across every continent. Where will you go next?</p></div>
+    <div class="info-hero"><h1>Explore Destinations</h1><p>Discover curated stays and package routes across Sri Lanka.</p></div>
     <div class="info-section">
       <h3>Featured Destinations</h3>
       <div class="deals-grid">
         ${dests.map(d => `
-          <div class="deal-card" onclick="navigate('packages');filterByDest('${d.name.split(',')[0]}')">
+          <div class="deal-card" onclick="navigate('packages');filterByDest('${d.name}')">
             <img src="${d.img}" alt="${d.name}" loading="lazy" />
             <div class="deal-badge"><span class="badge badge-green">${d.tag}</span></div>
             <div class="deal-card-body">
               <h4>${d.name}</h4>
               <p>${d.count} packages available</p>
-              <button class="btn btn-sm btn-outline" onclick="event.stopPropagation();navigate('packages')">Explore</button>
+              <button class="btn btn-sm btn-outline" onclick="event.stopPropagation();navigate('packages');filterByDest('${d.name}')">Explore</button>
             </div>
           </div>`).join('')}
       </div>
@@ -1100,15 +1112,17 @@ function renderDestinations() {
 }
 
 function renderDeals() {
-  const deals = [
-    { title: 'Bali Early Bird', img: 'https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=600&q=70', desc: 'Book 60 days ahead and save 20% on our 8-day Bali Retreat', price: '$1,032', original: '$1,290', badge: '20% OFF' },
-    { title: 'Japan Spring Special', img: 'https://images.unsplash.com/photo-1545569341-9eb8b30979d9?w=600&q=70', desc: 'Cherry blossom season — 2 free nights when you book before Feb 28', price: '$3,240', original: '$3,600', badge: 'FREE NIGHTS' },
-    { title: 'Maldives Honeymoon', img: 'https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=600&q=70', desc: 'Honeymoon package: free couple\'s spa treatment and sunset dhoni cruise', price: '$3,200', original: '$3,800', badge: 'HONEYMOON' },
-    { title: 'Morocco Group Deal', img: 'https://images.unsplash.com/photo-1548013146-72479768bada?w=600&q=70', desc: 'Book for 8+ people and receive 15% off per person', price: '$1,258', original: '$1,480', badge: 'GROUP' },
-  ];
+  const deals = PACKAGES.slice(0, 4).map(pkg => ({
+    title: pkg.title,
+    img: pkg.img,
+    desc: `${pkg.desc} Save on selected departures while availability lasts.`,
+    price: formatPrice(pkg.price),
+    original: formatPrice(pkg.originalPrice || pkg.price),
+    badge: pkg.badge.toUpperCase()
+  }));
   return `
     <button class="back-btn" onclick="navigate('home')">Back to Home</button>
-    <div class="info-hero"><h1>Current Deals</h1><p>Exclusive offers, limited-time savings, and early bird discounts.</p></div>
+    <div class="info-hero"><h1>Current Deals</h1><p>Local offers, early booking savings, and limited-time Sri Lanka package specials.</p></div>
     <div class="info-section">
       <div class="deals-grid">
         ${deals.map(d => `
@@ -1130,16 +1144,16 @@ function renderDeals() {
 
 function renderGuides() {
   const guides = [
-    { title: 'The Complete Guide to Bali', desc: 'Best temples, rice terraces, beaches, and local food — everything you need for your Bali itinerary.', readTime: '12 min read', region: 'Asia' },
-    { title: 'First-Time Safari: What to Expect', desc: 'Packing lists, wildlife etiquette, the Big Five, and how to choose the right safari for your budget.', readTime: '15 min read', region: 'Africa' },
-    { title: 'Travelling Japan During Blossom Season', desc: 'Timing the sakura bloom, crowd avoidance strategies, and the best viewing spots in every major city.', readTime: '10 min read', region: 'Asia' },
-    { title: 'Patagonia Trekking: A Beginner\'s Guide', desc: 'Fitness preparation, gear lists, permit requirements, and everything you need to know before your first Patagonian trek.', readTime: '18 min read', region: 'Americas' },
-    { title: 'How to Plan the Perfect Amalfi Coast Trip', desc: 'Driving the coast, choosing your base town, hidden beaches, and the best restaurants with sea views.', readTime: '11 min read', region: 'Europe' },
-    { title: 'Maldives on a Budget (Yes, Really)', desc: 'Guesthouses vs resorts, local island hopping, and how to experience paradise without the luxury price tag.', readTime: '9 min read', region: 'Asia' },
+    { title: 'Planning a Cultural Triangle Journey', desc: 'How to combine Anuradhapura, Sigiriya, Dambulla, and Polonnaruwa into one smooth Sri Lanka itinerary.', readTime: '12 min read', region: 'Culture' },
+    { title: 'Your First Sri Lanka Safari', desc: 'What to pack, when to go, and how to choose between Yala and Udawalawe for wildlife experiences.', readTime: '15 min read', region: 'Wildlife' },
+    { title: 'Hill Country by Rail', desc: 'Where to stop between Kandy, Nuwara Eliya, and Ella for scenery, tea country, and local stays.', readTime: '10 min read', region: 'Scenic' },
+    { title: 'South Coast Escape Guide', desc: 'Tips for combining Bentota, Galle, and Mirissa into an easy beach-focused trip.', readTime: '11 min read', region: 'Coast' },
+    { title: 'How to Travel Sri Lanka with Family', desc: 'Family-friendly transport tips, hotel ideas, and activity pacing for multi-generation trips.', readTime: '13 min read', region: 'Family' },
+    { title: 'Wellness Weekends in Sri Lanka', desc: 'The best local areas for ayurveda, yoga, and slow travel without leaving the island.', readTime: '9 min read', region: 'Wellness' },
   ];
   return `
     <button class="back-btn" onclick="navigate('home')">Back to Home</button>
-    <div class="info-hero"><h1>Travel Guides</h1><p>In-depth guides written by our expert team of seasoned travellers.</p></div>
+    <div class="info-hero"><h1>Travel Guides</h1><p>In-depth Sri Lanka guides written by our local team.</p></div>
     <div class="info-section">
       <h3>Latest Guides</h3>
       <div class="info-grid" style="grid-template-columns:repeat(auto-fill,minmax(280px,1fr))">
@@ -1332,12 +1346,12 @@ function openPackage(id) {
       <div class="price-row"><span>Accommodation</span><span>Included</span></div>
       <div class="price-row"><span>Guided tours &amp; activities</span><span>Included</span></div>
       <div class="price-row"><span>Meals (as stated)</span><span>Included</span></div>
-      <div class="price-row"><span>Airport transfers</span><span>Included</span></div>
+      <div class="price-row"><span>Local transfers</span><span>Included</span></div>
       <div class="price-row"><span>Taxes &amp; fees (12%)</span><span>${currencySymbol}${tax.toLocaleString()}</span></div>
       <div class="price-row total"><span>Total per person</span><span>${currencySymbol}${total.toLocaleString()}</span></div>
     </div>
     <div class="alert alert-success">Group discount: 10% off for 10 or more travelers; 15% for 20 or more travelers.</div>
-    <div class="alert alert-info">Flights, travel insurance, and visa fees are not included in the package price.</div>`;
+    <div class="alert alert-info">Travel insurance and personal expenses are not included in the package price.</div>`;
 
   document.getElementById('tab-reviews').innerHTML = `
     <div style="margin-bottom:24px">
@@ -1409,7 +1423,10 @@ function filterPackages() {
   const budget = parseFloat(document.getElementById('filterBudget').value) || Infinity;
   const sort   = document.getElementById('filterSort').value;
 
-  if (dest)   list = list.filter(p => p.region === dest);
+  if (dest) {
+    const relatedLocations = getRelatedHotelLocations(dest);
+    list = list.filter(p => packageMatchesSearch(p, dest, relatedLocations));
+  }
   if (dur === 'short')  list = list.filter(p => p.duration <= 5);
   if (dur === 'medium') list = list.filter(p => p.duration >= 6 && p.duration <= 10);
   if (dur === 'long')   list = list.filter(p => p.duration >= 11);
@@ -1428,16 +1445,197 @@ function clearFilters() {
   document.getElementById('filterDur').value    = '';
   document.getElementById('filterBudget').value = '';
   document.getElementById('filterSort').value   = 'featured';
+  syncCustomSelects();
   renderPackages(PACKAGES);
 }
 
 function filterByDest(keyword) {
   const dest = document.getElementById('filterDest');
   if (dest) {
-    const opt = Array.from(dest.options).find(o => o.text.includes(keyword));
-    if (opt) { dest.value = opt.value; filterPackages(); }
+    const normalizedKeyword = normalizeSearchTerm(keyword);
+    const opt = Array.from(dest.options).find(o => normalizeSearchTerm(o.text).includes(normalizedKeyword));
+    if (opt) {
+      dest.value = opt.value;
+      syncCustomSelect(dest);
+      filterPackages();
+    }
   }
 }
+
+function initializeCustomSelects(root = document) {
+  const selects = [];
+
+  if (root instanceof Element && root.matches('select')) {
+    selects.push(root);
+  }
+
+  if (root.querySelectorAll) {
+    selects.push(...root.querySelectorAll('select'));
+  }
+
+  selects.forEach(select => {
+    if (select.dataset.customSelectReady === 'true' || select.multiple || select.size > 1) return;
+
+    const wrapper = document.createElement('div');
+    wrapper.className = 'custom-select-wrap';
+
+    if (select.classList.contains('nav-currency-selector')) {
+      wrapper.classList.add('custom-select-nav');
+    }
+    if (select.closest('.filter-group')) {
+      wrapper.classList.add('custom-select-filter');
+    }
+    if (select.closest('.form-field')) {
+      wrapper.classList.add('custom-select-form');
+    }
+    if (select.closest('.search-field')) {
+      wrapper.classList.add('custom-select-search');
+    }
+
+    const trigger = document.createElement('button');
+    trigger.type = 'button';
+    trigger.className = 'custom-select-trigger';
+    trigger.setAttribute('aria-haspopup', 'listbox');
+    trigger.setAttribute('aria-expanded', 'false');
+
+    const label = document.createElement('span');
+    label.className = 'custom-select-label';
+    trigger.appendChild(label);
+
+    const menu = document.createElement('div');
+    menu.className = 'custom-select-menu';
+    menu.setAttribute('role', 'listbox');
+
+    select.parentNode.insertBefore(wrapper, select);
+    wrapper.appendChild(trigger);
+    wrapper.appendChild(menu);
+    wrapper.appendChild(select);
+
+    select.classList.add('custom-select-native');
+    select.dataset.customSelectReady = 'true';
+
+    rebuildCustomSelect(select);
+
+    trigger.addEventListener('click', event => {
+      event.preventDefault();
+      toggleCustomSelect(select);
+    });
+
+    trigger.addEventListener('keydown', event => {
+      if (['Enter', ' ', 'ArrowDown'].includes(event.key)) {
+        event.preventDefault();
+        openCustomSelect(select);
+      }
+      if (event.key === 'Escape') {
+        closeAllCustomSelects();
+      }
+    });
+
+    select.addEventListener('change', () => syncCustomSelect(select));
+  });
+}
+
+function rebuildCustomSelect(select) {
+  const wrapper = select.parentElement;
+  const menu = wrapper ? wrapper.querySelector('.custom-select-menu') : null;
+  if (!wrapper || !menu) return;
+
+  menu.innerHTML = Array.from(select.options).map(option => `
+    <button
+      type="button"
+      class="custom-select-option${option.selected ? ' active' : ''}"
+      data-value="${option.value}"
+      role="option"
+      aria-selected="${option.selected ? 'true' : 'false'}"
+    >${option.text}</button>
+  `).join('');
+
+  menu.querySelectorAll('.custom-select-option').forEach(optionBtn => {
+    optionBtn.addEventListener('click', () => {
+      select.value = optionBtn.dataset.value;
+      select.dispatchEvent(new Event('change', { bubbles: true }));
+      syncCustomSelect(select);
+      closeAllCustomSelects();
+    });
+  });
+
+  syncCustomSelect(select);
+}
+
+function syncCustomSelect(select) {
+  if (!select || !select.dataset.customSelectReady) return;
+
+  const wrapper = select.parentElement;
+  const label = wrapper ? wrapper.querySelector('.custom-select-label') : null;
+  const menu = wrapper ? wrapper.querySelector('.custom-select-menu') : null;
+  const selectedOption = select.options[select.selectedIndex] || select.options[0];
+
+  if (label && selectedOption) {
+    label.textContent = selectedOption.text;
+  }
+
+  if (menu) {
+    menu.querySelectorAll('.custom-select-option').forEach(optionBtn => {
+      const isActive = optionBtn.dataset.value === select.value;
+      optionBtn.classList.toggle('active', isActive);
+      optionBtn.setAttribute('aria-selected', isActive ? 'true' : 'false');
+    });
+  }
+}
+
+function syncCustomSelects(root = document) {
+  const selects = root.querySelectorAll ? root.querySelectorAll('select[data-custom-select-ready="true"]') : [];
+  selects.forEach(select => syncCustomSelect(select));
+}
+
+function toggleCustomSelect(select) {
+  const wrapper = select ? select.parentElement : null;
+  if (!wrapper) return;
+
+  const isOpen = wrapper.classList.contains('open');
+  closeAllCustomSelects();
+
+  if (!isOpen) {
+    wrapper.classList.add('open');
+    const trigger = wrapper.querySelector('.custom-select-trigger');
+    if (trigger) trigger.setAttribute('aria-expanded', 'true');
+  }
+}
+
+function openCustomSelect(select) {
+  const wrapper = select ? select.parentElement : null;
+  if (!wrapper) return;
+
+  closeAllCustomSelects();
+  wrapper.classList.add('open');
+  const trigger = wrapper.querySelector('.custom-select-trigger');
+  if (trigger) trigger.setAttribute('aria-expanded', 'true');
+}
+
+function closeAllCustomSelects() {
+  document.querySelectorAll('.custom-select-wrap.open').forEach(wrapper => {
+    wrapper.classList.remove('open');
+    const trigger = wrapper.querySelector('.custom-select-trigger');
+    if (trigger) trigger.setAttribute('aria-expanded', 'false');
+  });
+}
+
+document.addEventListener('click', event => {
+  if (!event.target.closest('.custom-select-wrap')) {
+    closeAllCustomSelects();
+  }
+});
+
+const customSelectObserver = new MutationObserver(mutations => {
+  mutations.forEach(mutation => {
+    mutation.addedNodes.forEach(node => {
+      if (node.nodeType === Node.ELEMENT_NODE) {
+        initializeCustomSelects(node);
+        syncCustomSelects(node);
+      }
+    });
+  });
+});
 
 function normalizeSearchTerm(value) {
   return (value || '').toLowerCase().trim();
@@ -1474,6 +1672,7 @@ function packageMatchesSearch(pkg, term, extraTerms = []) {
   const searchableValues = [
     pkg.dest,
     pkg.region,
+    ...(pkg.locations || []),
     pkg.title,
     pkg.desc,
     ...(pkg.highlights || []),
@@ -1494,13 +1693,14 @@ function packageMatchesSearch(pkg, term, extraTerms = []) {
 
 function getRelatedHotelLocations(term) {
   if (!term) return [];
+  const normalizedTerm = normalizeSearchTerm(term);
 
   return [...new Set(
     HOTELS
       .filter(hotel => {
         const hotelName = normalizeSearchTerm(hotel.name);
         const hotelLocation = normalizeSearchTerm(hotel.location);
-        return hotelName.includes(term) || hotelLocation.includes(term);
+        return hotelName.includes(normalizedTerm) || hotelLocation.includes(normalizedTerm);
       })
       .map(hotel => hotel.location)
       .filter(Boolean)
@@ -1626,6 +1826,7 @@ function clearHotelFilters() {
   document.getElementById('filterHotelCat').value = '';
   document.getElementById('filterHotelBudget').value = '';
   document.getElementById('filterHotelSort').value = 'featured';
+  syncCustomSelects();
   renderHotels(HOTELS);
 }
 
@@ -1872,7 +2073,7 @@ function renderGroupDashboard() {
       <ul>
         <li>Booking overview and status tracking</li>
         <li>Task assignment and deadline monitoring</li>
-        <li>Shared document repository for passports, visas and insurance</li>
+        <li>Shared document repository for guest lists, payment slips, and rooming details</li>
         <li>Expense and contribution tracking</li>
       </ul>
     </div>
@@ -1965,7 +2166,7 @@ function showGroupAccessModal() {
             </div>
             <div class="status-item">
               <div class="status-icon">⏳</div>
-              <div class="status-text">Package booking in progress - Cultural & Heritage</div>
+              <div class="status-text">Package booking in progress - Sacred City Retreat</div>
               <div class="status-date">2026-05-01</div>
             </div>
             <div class="status-item">
@@ -2246,7 +2447,7 @@ function renderCorporatePolicy() {
       <ul>
         <li><strong>Scope:</strong> Business trip bookings, employee-level travel, and group incentive travel.</li>
         <li><strong>Approval:</strong> All requests must be approved by managers before booking. Escalations after 24h.</li>
-        <li><strong>Booking Window:</strong> Minimum 14 days lead time for regular travel; 30 days for international travel.</li>
+        <li><strong>Booking Window:</strong> Minimum 14 days lead time for regular travel; 21 days for large group departures and retreats.</li>
         <li><strong>Cost Controls:</strong> Per-diem allowances, class of travel, accommodation max rates, and preferred supplier usage.</li>
         <li><strong>Payment:</strong> Central invoicing, corporate credit line, and split payment options.</li>
         <li><strong>Cancellations:</strong> 30+ days for full refund; 15-30 days partial; less than 15 days subject to supplier penalties.</li>
@@ -2256,7 +2457,7 @@ function renderCorporatePolicy() {
       <h3>Employee Safety & Compliance</h3>
       <ul>
         <li>24/7 emergency assistance and travel-risk monitoring</li>
-        <li>Visa and immigration support for all corporate destinations</li>
+        <li>Local transport coordination and accommodation support for all corporate itineraries</li>
         <li>Health & safety requirements aligned with WHO travel advisories</li>
         <li>Environmental & sustainability partner programs (offsetting, local impact)</li>
       </ul>
@@ -2432,7 +2633,7 @@ function getCustomerContent(s) {
     </div>
     <div class="dash-card">
       <h4>Upcoming Trip</h4>
-      <div class="alert alert-success">Japan Cherry Blossom Trail departs March 20, 2025 — 28 days away</div>
+      <div class="alert alert-success">Beach Escape departs March 20, 2025 — 28 days away</div>
       <button class="btn btn-sm btn-outline" onclick="renderDashContent('active')">View Active Trips</button>
     </div>
     <div class="dash-card"><h4>Recent Bookings</h4>${bookingTable(bookingHistory.slice(0, 3), false)}</div>`;
@@ -2451,7 +2652,7 @@ function getCustomerContent(s) {
     <div class="dash-card">
       <h4>Spending by Category</h4>
       ${budgetBar('Accommodation', 'Rs. 72,000', 'Rs. 108,000', 67)}
-      ${budgetBar('Flights',       'Rs. 48,000',   'Rs. 72,000', 67)}
+      ${budgetBar('Local Transport', 'Rs. 48,000', 'Rs. 72,000', 67)}
       ${budgetBar('Food & Dining', 'Rs. 21,600',   'Rs. 36,000',   60)}
       ${budgetBar('Activities',    'Rs. 19,200',   'Rs. 36,000',   53)}
       ${budgetBar('Transport',     'Rs. 8,400',   'Rs. 24,000',   35)}
@@ -2462,10 +2663,10 @@ function getCustomerContent(s) {
     <div class="dash-header"><h2>Notifications</h2></div>
     <div class="dash-card">
       ${[
-        { msg: 'Your Japan trip departs in 28 days — review your itinerary', time: '2 hours ago' },
+        { msg: 'Your Beach Escape begins in 14 days - review your itinerary', time: '2 hours ago' },
         { msg: 'Payment confirmed for booking TB-2025-X9KLM', time: '3 days ago' },
-        { msg: 'New deal: Bali retreat now from Rs. 319,500 — limited availability', time: '5 days ago' },
-        { msg: 'Travel advisory: review Japan entry requirements before travel', time: '1 week ago' }
+        { msg: 'New deal: Wellness Retreat now from Rs. 105,000 - limited availability', time: '5 days ago' },
+        { msg: 'Travel advisory: review local weather updates before hill country travel', time: '1 week ago' }
       ].map(n => `
         <div style="padding:14px 0;border-bottom:1px solid var(--gray-100);display:flex;gap:14px;align-items:flex-start">
           <div style="flex:1">
@@ -2480,8 +2681,8 @@ function getCustomerContent(s) {
     <div class="dash-header"><h2>Active Trips</h2></div>
     <div class="dash-card">
       <div style="padding:22px;background:var(--green-wash);border-radius:var(--radius);border:1.5px solid var(--green-pale)">
-        <div style="font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--green-dark);margin-bottom:6px">Japan Cherry Blossom Trail</div>
-        <div style="font-size:.85rem;color:var(--gray-600);margin-bottom:14px">March 20 – April 2, 2025 &middot; 14 days &middot; Tokyo, Kyoto, Osaka</div>
+        <div style="font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--green-dark);margin-bottom:6px">Beach Escape</div>
+        <div style="font-size:.85rem;color:var(--gray-600);margin-bottom:14px">April 20 - April 24, 2026 &middot; 5 days &middot; Colombo, Bentota, Galle</div>
         <div style="display:flex;gap:10px;flex-wrap:wrap">
           <button class="btn btn-sm btn-primary" onclick="showToast('Itinerary downloaded')">Download Itinerary</button>
           <button class="btn btn-sm btn-outline" onclick="openPackage(4)">View Package Details</button>
@@ -2520,9 +2721,9 @@ function getAgentContent(s) {
       <div class="table-wrap"><table>
         <thead><tr><th>Client</th><th>Package</th><th>Travel Date</th><th>Status</th><th>Commission</th></tr></thead>
         <tbody>
-          <tr><td>Anderson Family</td><td>Bali Retreat</td><td>14 Feb 2025</td><td><span class="badge badge-green">Confirmed</span></td><td>Rs. 7,680</td></tr>
-          <tr><td>Green Corp Team</td><td>Japan Trail</td><td>20 Mar 2025</td><td><span class="badge badge-blue">Pending</span></td><td>Rs. 21,600</td></tr>
-          <tr><td>Ms. K. Williams</td><td>Maldives Escape</td><td>5 Apr 2025</td><td><span class="badge badge-green">Confirmed</span></td><td>Rs. 19,200</td></tr>
+          <tr><td>Anderson Family</td><td>Sacred City Retreat</td><td>14 Feb 2025</td><td><span class="badge badge-green">Confirmed</span></td><td>Rs. 7,680</td></tr>
+          <tr><td>Green Corp Team</td><td>Corporate Leadership Retreat</td><td>20 Mar 2025</td><td><span class="badge badge-blue">Pending</span></td><td>Rs. 21,600</td></tr>
+          <tr><td>Ms. K. Williams</td><td>Wellness Retreat</td><td>5 Apr 2025</td><td><span class="badge badge-green">Confirmed</span></td><td>Rs. 19,200</td></tr>
         </tbody>
       </table></div>
     </div>`;
@@ -2601,14 +2802,14 @@ function getAgentContent(s) {
       <div class="table-wrap"><table id="clientsTable">
         <thead><tr><th>Client</th><th>Contact</th><th>Type</th><th>Last Trip</th><th>Total Spent</th><th>Status</th><th>Actions</th></tr></thead>
         <tbody id="clientsTableBody">
-          <tr data-client-id="sarah-anderson"><td><strong>Sarah Anderson</strong><br><small>Family of 4</small></td><td>sarah@email.com<br>+1 555-0123</td><td>Individual</td><td>Bali Retreat<br><small>Dec 2024</small></td><td>Rs. 2,520,000</td><td><span class="badge badge-green">Active</span></td><td><button class="btn btn-sm btn-outline" onclick="viewClient('sarah-anderson')">View</button></td></tr>
-          <tr data-client-id="techcorp-solutions"><td><strong>TechCorp Solutions</strong><br><small>45 employees</small></td><td>travel@techcorp.com<br>+1 555-0456</td><td>Corporate</td><td>Japan Team Building<br><small>Nov 2024</small></td><td>Rs. 20,160,000</td><td><span class="badge badge-green">Active</span></td><td><button class="btn btn-sm btn-outline" onclick="viewClient('techcorp-solutions')">View</button></td></tr>
-          <tr data-client-id="mike-johnson"><td><strong>Mike Johnson</strong><br><small>Solo traveler</small></td><td>mike@corp.com<br>+1 555-0789</td><td>Business</td><td>Serengeti Safari<br><small>Oct 2024</small></td><td>Rs. 7,230,000</td><td><span class="badge badge-blue">Planning</span></td><td><button class="btn btn-sm btn-outline" onclick="viewClient('mike-johnson')">View</button></td></tr>
-          <tr data-client-id="priya-raj-patel"><td><strong>Priya & Raj Patel</strong><br><small>Couple + 2 kids</small></td><td>priya@biz.com<br>+1 555-0321</td><td>Family</td><td>Maldives Resort<br><small>Sep 2024</small></td><td>Rs. 3,840,000</td><td><span class="badge badge-green">Active</span></td><td><button class="btn btn-sm btn-outline" onclick="viewClient('priya-raj-patel')">View</button></td></tr>
-          <tr data-client-id="global-marketing"><td><strong>Global Marketing Inc</strong><br><small>28 employees</small></td><td>hr@globalmkt.com<br>+1 555-0654</td><td>Corporate</td><td>Amalfi Team Event<br><small>Aug 2024</small></td><td>Rs. 12,780,000</td><td><span class="badge badge-orange">Inactive</span></td><td><button class="btn btn-sm btn-outline" onclick="viewClient('global-marketing')">View</button></td></tr>
-          <tr data-client-id="carlos-mendes"><td><strong>Carlos Mendes</strong><br><small>Adventure seeker</small></td><td>carlos@travel.co<br>+1 555-0987</td><td>Individual</td><td>Patagonia Trek<br><small>Jul 2024</small></td><td>Rs. 4,380,000</td><td><span class="badge badge-green">Active</span></td><td><button class="btn btn-sm btn-outline" onclick="viewClient('carlos-mendes')">View</button></td></tr>
+          <tr data-client-id="sarah-anderson"><td><strong>Sarah Anderson</strong><br><small>Family of 4</small></td><td>sarah@email.com<br>+1 555-0123</td><td>Individual</td><td>Sacred City Retreat<br><small>Dec 2024</small></td><td>Rs. 2,520,000</td><td><span class="badge badge-green">Active</span></td><td><button class="btn btn-sm btn-outline" onclick="viewClient('sarah-anderson')">View</button></td></tr>
+          <tr data-client-id="techcorp-solutions"><td><strong>TechCorp Solutions</strong><br><small>45 employees</small></td><td>travel@techcorp.com<br>+1 555-0456</td><td>Corporate</td><td>Corporate Travel<br><small>Nov 2024</small></td><td>Rs. 20,160,000</td><td><span class="badge badge-green">Active</span></td><td><button class="btn btn-sm btn-outline" onclick="viewClient('techcorp-solutions')">View</button></td></tr>
+          <tr data-client-id="mike-johnson"><td><strong>Mike Johnson</strong><br><small>Solo traveler</small></td><td>mike@corp.com<br>+1 555-0789</td><td>Business</td><td>Wildlife Safari<br><small>Oct 2024</small></td><td>Rs. 7,230,000</td><td><span class="badge badge-blue">Planning</span></td><td><button class="btn btn-sm btn-outline" onclick="viewClient('mike-johnson')">View</button></td></tr>
+          <tr data-client-id="priya-raj-patel"><td><strong>Priya & Raj Patel</strong><br><small>Couple + 2 kids</small></td><td>priya@biz.com<br>+1 555-0321</td><td>Family</td><td>Honeymoon Package<br><small>Sep 2024</small></td><td>Rs. 3,840,000</td><td><span class="badge badge-green">Active</span></td><td><button class="btn btn-sm btn-outline" onclick="viewClient('priya-raj-patel')">View</button></td></tr>
+          <tr data-client-id="global-marketing"><td><strong>Global Marketing Inc</strong><br><small>28 employees</small></td><td>hr@globalmkt.com<br>+1 555-0654</td><td>Corporate</td><td>Corporate Leadership Retreat<br><small>Aug 2024</small></td><td>Rs. 12,780,000</td><td><span class="badge badge-orange">Inactive</span></td><td><button class="btn btn-sm btn-outline" onclick="viewClient('global-marketing')">View</button></td></tr>
+          <tr data-client-id="carlos-mendes"><td><strong>Carlos Mendes</strong><br><small>Adventure seeker</small></td><td>carlos@travel.co<br>+1 555-0987</td><td>Individual</td><td>Wildlife Safari<br><small>Jul 2024</small></td><td>Rs. 4,380,000</td><td><span class="badge badge-green">Active</span></td><td><button class="btn btn-sm btn-outline" onclick="viewClient('carlos-mendes')">View</button></td></tr>
           <tr data-client-id="nordic-enterprises"><td><strong>Nordic Enterprises</strong><br><small>67 employees</small></td><td>travel@nordic.com<br>+1 555-0432</td><td>Corporate</td><td>Multiple destinations<br><small>Jun 2024</small></td><td>Rs. 26,820,000</td><td><span class="badge badge-green">Active</span></td><td><button class="btn btn-sm btn-outline" onclick="viewClient('nordic-enterprises')">View</button></td></tr>
-          <tr data-client-id="lisa-thompson"><td><strong>Lisa Thompson</strong><br><small>Solo business</small></td><td>lisa@consulting.net<br>+1 555-0765</td><td>Business</td><td>London Conference<br><small>May 2024</small></td><td>Rs. 1,860,000</td><td><span class="badge badge-blue">Planning</span></td><td><button class="btn btn-sm btn-outline" onclick="viewClient('lisa-thompson')">View</button></td></tr>
+          <tr data-client-id="lisa-thompson"><td><strong>Lisa Thompson</strong><br><small>Solo business</small></td><td>lisa@consulting.net<br>+1 555-0765</td><td>Business</td><td>Wellness Retreat<br><small>May 2024</small></td><td>Rs. 1,860,000</td><td><span class="badge badge-blue">Planning</span></td><td><button class="btn btn-sm btn-outline" onclick="viewClient('lisa-thompson')">View</button></td></tr>
         </tbody>
       </table></div>
     </div>`;
@@ -2642,10 +2843,10 @@ function getAgentContent(s) {
       <div class="table-wrap"><table>
         <thead><tr><th>Package</th><th>Bookings</th><th>Total Value</th><th>Commission Rate</th><th>Earned</th></tr></thead>
         <tbody>
-          <tr><td>Bali Retreat</td><td>23</td><td>Rs. 11,241,000</td><td>10%</td><td>Rs. 1,124,100</td></tr>
-          <tr><td>Japan Cherry Blossom</td><td>18</td><td>Rs. 19,440,000</td><td>8%</td><td>Rs. 1,555,200</td></tr>
-          <tr><td>Maldives Overwater</td><td>15</td><td>Rs. 14,400,000</td><td>12%</td><td>Rs. 1,728,000</td></tr>
-          <tr><td>Serengeti Safari</td><td>8</td><td>Rs. 5,040,000</td><td>15%</td><td>Rs. 756,000</td></tr>
+          <tr><td>Sacred City Retreat</td><td>23</td><td>Rs. 11,241,000</td><td>10%</td><td>Rs. 1,124,100</td></tr>
+          <tr><td>Scenic Rail Journey</td><td>18</td><td>Rs. 19,440,000</td><td>8%</td><td>Rs. 1,555,200</td></tr>
+          <tr><td>Honeymoon Package</td><td>15</td><td>Rs. 14,400,000</td><td>12%</td><td>Rs. 1,728,000</td></tr>
+          <tr><td>Wildlife Safari</td><td>8</td><td>Rs. 5,040,000</td><td>15%</td><td>Rs. 756,000</td></tr>
           <tr><td>Sri Lanka Family</td><td>12</td><td>Rs. 6,696,000</td><td>9%</td><td>Rs. 602,640</td></tr>
         </tbody>
       </table></div>
@@ -2657,7 +2858,7 @@ function getAgentContent(s) {
       <div class="stat-card"><div class="label">Conversion Rate</div><div class="value">24.5%</div><div class="sub">Quotes to bookings</div></div>
       <div class="stat-card"><div class="label">Client Retention</div><div class="value">78%</div><div class="sub">Repeat business</div></div>
       <div class="stat-card"><div class="label">Avg. Trip Size</div><div class="value">4.2</div><div class="sub">Travelers per booking</div></div>
-      <div class="stat-card"><div class="label">Top Destination</div><div class="value">Bali</div><div class="sub">45% of bookings</div></div>
+      <div class="stat-card"><div class="label">Top Destination</div><div class="value">Sigiriya</div><div class="sub">45% of bookings</div></div>
     </div>
     <div class="dash-card">
       <h4>Monthly Performance</h4>
@@ -2692,8 +2893,8 @@ function getCorporateContent(s) {
       <div class="table-wrap"><table>
         <thead><tr><th>Employee</th><th>Package</th><th>Purpose</th><th>Cost</th><th>Action</th></tr></thead>
         <tbody>
-          <tr><td>Alice Chen</td><td>Tokyo Business 5-day</td><td>Client Meeting</td><td>Rs. 110,400</td><td><button class="btn btn-sm btn-primary" onclick="showToast('Booking approved')">Approve</button> <button class="btn btn-sm btn-danger" onclick="showToast('Booking rejected')">Reject</button></td></tr>
-          <tr><td>David Park</td><td>London Summit</td><td>Conference</td><td>Rs. 144,000</td><td><button class="btn btn-sm btn-primary" onclick="showToast('Booking approved')">Approve</button> <button class="btn btn-sm btn-danger" onclick="showToast('Booking rejected')">Reject</button></td></tr>
+          <tr><td>Alice Chen</td><td>Corporate Travel</td><td>Client Meeting</td><td>Rs. 110,400</td><td><button class="btn btn-sm btn-primary" onclick="showToast('Booking approved')">Approve</button> <button class="btn btn-sm btn-danger" onclick="showToast('Booking rejected')">Reject</button></td></tr>
+          <tr><td>David Park</td><td>Corporate Leadership Retreat</td><td>Conference</td><td>Rs. 144,000</td><td><button class="btn btn-sm btn-primary" onclick="showToast('Booking approved')">Approve</button> <button class="btn btn-sm btn-danger" onclick="showToast('Booking rejected')">Reject</button></td></tr>
         </tbody>
       </table></div>
     </div>`;
@@ -2704,9 +2905,9 @@ function getCorporateContent(s) {
       <div class="table-wrap"><table>
         <thead><tr><th>Employee</th><th>Department</th><th>Package</th><th>Dates</th><th>Status</th></tr></thead>
         <tbody>
-          <tr><td>Alice Chen</td><td>Sales</td><td>Tokyo Business</td><td>Feb 14–19</td><td><span class="badge badge-blue">Pending</span></td></tr>
-          <tr><td>James Wilson</td><td>Engineering</td><td>Singapore Summit</td><td>Mar 1–4</td><td><span class="badge badge-green">Approved</span></td></tr>
-          <tr><td>Maria Santos</td><td>Marketing</td><td>New York Cannes Lions</td><td>Jun 16–22</td><td><span class="badge badge-green">Approved</span></td></tr>
+          <tr><td>Alice Chen</td><td>Sales</td><td>Corporate Travel</td><td>Feb 14–19</td><td><span class="badge badge-blue">Pending</span></td></tr>
+          <tr><td>James Wilson</td><td>Engineering</td><td>Corporate Leadership Retreat</td><td>Mar 1–4</td><td><span class="badge badge-green">Approved</span></td></tr>
+          <tr><td>Maria Santos</td><td>Marketing</td><td>Luxury Escape</td><td>Jun 16–22</td><td><span class="badge badge-green">Approved</span></td></tr>
         </tbody>
       </table></div>
     </div>`;
@@ -2734,14 +2935,14 @@ function getCorporateContent(s) {
       <div class="table-wrap"><table>
         <thead><tr><th>Submitted</th><th>Employee</th><th>Department</th><th>Destination</th><th>Purpose</th><th>Cost</th><th>Status</th><th>Actions</th></tr></thead>
         <tbody>
-          <tr><td><strong>Today, 09:14</strong><br><small>2 hours ago</small></td><td><strong>Alice Chen</strong><br><small>Senior Sales Rep</small></td><td>Sales</td><td>Tokyo, Japan</td><td>Q1 client review meeting</td><td>Rs. 110,400</td><td><span class="badge badge-blue">Pending</span></td><td><button class="btn btn-sm btn-primary" onclick="approveBooking('alice-chen')">Approve</button> <button class="btn btn-sm btn-danger" onclick="rejectBooking('alice-chen')">Reject</button></td></tr>
+          <tr><td><strong>Today, 09:14</strong><br><small>2 hours ago</small></td><td><strong>Alice Chen</strong><br><small>Senior Sales Rep</small></td><td>Sales</td><td>Kandy, Sri Lanka</td><td>Q1 client review meeting</td><td>Rs. 110,400</td><td><span class="badge badge-blue">Pending</span></td><td><button class="btn btn-sm btn-primary" onclick="approveBooking('alice-chen')">Approve</button> <button class="btn btn-sm btn-danger" onclick="rejectBooking('alice-chen')">Reject</button></td></tr>
           <tr><td><strong>Today, 11:32</strong><br><small>23 min ago</small></td><td><strong>David Park</strong><br><small>Tech Lead</small></td><td>Engineering</td><td>London, UK</td><td>Tech conference & team summit</td><td>Rs. 144,000</td><td><span class="badge badge-blue">Pending</span></td><td><button class="btn btn-sm btn-primary" onclick="approveBooking('david-park')">Approve</button> <button class="btn btn-sm btn-danger" onclick="rejectBooking('david-park')">Reject</button></td></tr>
-          <tr><td><strong>Yesterday</strong><br><small>18 hours ago</small></td><td><strong>Maria Santos</strong><br><small>Marketing Dir</small></td><td>Marketing</td><td>New York, USA</td><td>Cannes Lions advertising festival</td><td>Rs. 216,000</td><td><span class="badge badge-orange">Urgent</span></td><td><button class="btn btn-sm btn-primary" onclick="approveBooking('maria-santos')">Approve</button> <button class="btn btn-sm btn-danger" onclick="rejectBooking('maria-santos')">Reject</button></td></tr>
+          <tr><td><strong>Yesterday</strong><br><small>18 hours ago</small></td><td><strong>Maria Santos</strong><br><small>Marketing Dir</small></td><td>Marketing</td><td>Galle, Sri Lanka</td><td>Campaign planning workshop</td><td>Rs. 216,000</td><td><span class="badge badge-orange">Urgent</span></td><td><button class="btn btn-sm btn-primary" onclick="approveBooking('maria-santos')">Approve</button> <button class="btn btn-sm btn-danger" onclick="rejectBooking('maria-santos')">Reject</button></td></tr>
           <tr><td><strong>2 days ago</strong><br><small>48 hours ago</small></td><td><strong>James Wilson</strong><br><small>Product Mgr</small></td><td>Product</td><td>Singapore</td><td>Product strategy offsite</td><td>Rs. 99,600</td><td><span class="badge badge-red">Escalated</span></td><td><button class="btn btn-sm btn-primary" onclick="approveBooking('james-wilson')">Approve</button> <button class="btn btn-sm btn-danger" onclick="rejectBooking('james-wilson')">Reject</button></td></tr>
-          <tr><td><strong>3 days ago</strong><br><small>72 hours ago</small></td><td><strong>Sarah Kim</strong><br><small>HR Manager</small></td><td>Human Resources</td><td>Vancouver, Canada</td><td>HR leadership conference</td><td>Rs. 144,000</td><td><span class="badge badge-red">Escalated</span></td><td><button class="btn btn-sm btn-primary" onclick="approveBooking('sarah-kim')">Approve</button> <button class="btn btn-sm btn-danger" onclick="rejectBooking('sarah-kim')">Reject</button></td></tr>
-          <tr><td><strong>Today, 14:45</strong><br><small>1 min ago</small></td><td><strong>Raj Patel</strong><br><small>Sales Rep</small></td><td>Sales</td><td>Mumbai, India</td><td>Client negotiations</td><td>Rs. 57,600</td><td><span class="badge badge-blue">Pending</span></td><td><button class="btn btn-sm btn-primary" onclick="approveBooking('raj-patel')">Approve</button> <button class="btn btn-sm btn-danger" onclick="rejectBooking('raj-patel')">Reject</button></td></tr>
-          <tr><td><strong>Yesterday</strong><br><small>16 hours ago</small></td><td><strong>Lisa Thompson</strong><br><small>Finance Dir</small></td><td>Finance</td><td>Sydney, Australia</td><td>Board meeting & audit review</td><td>Rs. 288,000 <span class="badge badge-red" style="font-size:0.7rem">Over Budget</span></td><td><span class="badge badge-orange">Urgent</span></td><td><button class="btn btn-sm btn-primary" onclick="approveBooking('lisa-thompson')">Approve</button> <button class="btn btn-sm btn-danger" onclick="rejectBooking('lisa-thompson')">Reject</button></td></tr>
-          <tr><td><strong>Today, 08:30</strong><br><small>4 hours ago</small></td><td><strong>Michael Chen</strong><br><small>VP Sales</small></td><td>Sales</td><td>Dubai, UAE</td><td>Regional sales summit</td><td>Rs. 201,600</td><td><span class="badge badge-blue">Pending</span></td><td><button class="btn btn-sm btn-primary" onclick="approveBooking('michael-chen')">Approve</button> <button class="btn btn-sm btn-danger" onclick="rejectBooking('michael-chen')">Reject</button></td></tr>
+          <tr><td><strong>3 days ago</strong><br><small>72 hours ago</small></td><td><strong>Sarah Kim</strong><br><small>HR Manager</small></td><td>Human Resources</td><td>Bentota, Sri Lanka</td><td>HR leadership workshop</td><td>Rs. 144,000</td><td><span class="badge badge-red">Escalated</span></td><td><button class="btn btn-sm btn-primary" onclick="approveBooking('sarah-kim')">Approve</button> <button class="btn btn-sm btn-danger" onclick="rejectBooking('sarah-kim')">Reject</button></td></tr>
+          <tr><td><strong>Today, 14:45</strong><br><small>1 min ago</small></td><td><strong>Raj Patel</strong><br><small>Sales Rep</small></td><td>Sales</td><td>Colombo, Sri Lanka</td><td>Client negotiations</td><td>Rs. 57,600</td><td><span class="badge badge-blue">Pending</span></td><td><button class="btn btn-sm btn-primary" onclick="approveBooking('raj-patel')">Approve</button> <button class="btn btn-sm btn-danger" onclick="rejectBooking('raj-patel')">Reject</button></td></tr>
+          <tr><td><strong>Yesterday</strong><br><small>16 hours ago</small></td><td><strong>Lisa Thompson</strong><br><small>Finance Dir</small></td><td>Finance</td><td>Nuwara Eliya, Sri Lanka</td><td>Board meeting & audit review</td><td>Rs. 288,000 <span class="badge badge-red" style="font-size:0.7rem">Over Budget</span></td><td><span class="badge badge-orange">Urgent</span></td><td><button class="btn btn-sm btn-primary" onclick="approveBooking('lisa-thompson')">Approve</button> <button class="btn btn-sm btn-danger" onclick="rejectBooking('lisa-thompson')">Reject</button></td></tr>
+          <tr><td><strong>Today, 08:30</strong><br><small>4 hours ago</small></td><td><strong>Michael Chen</strong><br><small>VP Sales</small></td><td>Sales</td><td>Yala, Sri Lanka</td><td>Regional sales summit</td><td>Rs. 201,600</td><td><span class="badge badge-blue">Pending</span></td><td><button class="btn btn-sm btn-primary" onclick="approveBooking('michael-chen')">Approve</button> <button class="btn btn-sm btn-danger" onclick="rejectBooking('michael-chen')">Reject</button></td></tr>
         </tbody>
       </table></div>
     </div>`;
@@ -2766,7 +2967,7 @@ function getCorporateContent(s) {
     <div class="stats-grid">
       <div class="stat-card"><div class="label">Q1 Spend</div><div class="value">Rs. 5,640,000</div><div class="sub">vs Rs. 6,000,000 budget</div></div>
       <div class="stat-card"><div class="label">Avg. per Employee</div><div class="value">Rs. 16,588</div><div class="sub">This quarter</div></div>
-      <div class="stat-card"><div class="label">Top Category</div><div class="value">Flights</div><div class="sub">42% of spend</div></div>
+      <div class="stat-card"><div class="label">Top Category</div><div class="value">Local Transport</div><div class="sub">42% of spend</div></div>
       <div class="stat-card"><div class="label">Compliance Rate</div><div class="value">94%</div><div class="sub">Policy adherence</div></div>
     </div>
     <div class="dash-card">
@@ -2774,7 +2975,7 @@ function getCorporateContent(s) {
       <div class="table-wrap"><table>
         <thead><tr><th>Category</th><th>Amount</th><th>% of Total</th><th>vs Budget</th></tr></thead>
         <tbody>
-          <tr><td>Flights</td><td>Rs. 2,371,200</td><td>42%</td><td><span class="badge badge-green">Under</span></td></tr>
+          <tr><td>Local Transport</td><td>Rs. 2,371,200</td><td>42%</td><td><span class="badge badge-green">Under</span></td></tr>
           <tr><td>Hotels</td><td>Rs. 1,915,200</td><td>34%</td><td><span class="badge badge-green">Under</span></td></tr>
           <tr><td>Meals & Expenses</td><td>Rs. 720,000</td><td>15%</td><td><span class="badge badge-orange">Slightly over</span></td></tr>
           <tr><td>Ground Transport</td><td>Rs. 226,800</td><td>5%</td><td><span class="badge badge-green">Under</span></td></tr>
@@ -2807,7 +3008,7 @@ function getAdminContent(s) {
       <div class="table-wrap"><table>
         <thead><tr><th>Time</th><th>User</th><th>Action</th><th>Status</th></tr></thead>
         <tbody>
-          <tr><td>2 min ago</td><td>sarah@mail.com</td><td>Booked Bali Retreat</td><td><span class="badge badge-green">OK</span></td></tr>
+          <tr><td>2 min ago</td><td>sarah@mail.com</td><td>Booked Sacred City Retreat</td><td><span class="badge badge-green">OK</span></td></tr>
           <tr><td>8 min ago</td><td>Agent: Martinez</td><td>Bulk booking &times; 24</td><td><span class="badge badge-blue">Processing</span></td></tr>
           <tr><td>12 min ago</td><td>corp@acme.com</td><td>Invoice generated</td><td><span class="badge badge-green">OK</span></td></tr>
           <tr><td>18 min ago</td><td>new_user@abc.com</td><td>Account created</td><td><span class="badge badge-green">OK</span></td></tr>
@@ -2861,9 +3062,9 @@ function getAdminContent(s) {
       <div class="table-wrap"><table>
         <thead><tr><th>Ref</th><th>Customer</th><th>Package</th><th>Date</th><th>Amount</th><th>Status</th></tr></thead>
         <tbody>
-          <tr><td style="font-family:monospace;font-size:.78rem">TB-2025-AB3F2</td><td>Sarah Anderson</td><td>Bali Retreat</td><td>Jan 15</td><td>Rs. 77,400</td><td><span class="badge badge-green">Completed</span></td></tr>
-          <tr><td style="font-family:monospace;font-size:.78rem">TB-2025-X9KLM</td><td>Tom Wilson</td><td>Japan Trail</td><td>Mar 20</td><td>Rs. 216,000</td><td><span class="badge badge-blue">Upcoming</span></td></tr>
-          <tr><td style="font-family:monospace;font-size:.78rem">TB-2025-QR7TY</td><td>Lisa Park</td><td>Morocco Expedition</td><td>Feb 10</td><td>Rs. 89,400</td><td><span class="badge badge-red">Cancelled</span></td></tr>
+          <tr><td style="font-family:monospace;font-size:.78rem">TB-2025-AB3F2</td><td>Sarah Anderson</td><td>Sacred City Retreat</td><td>Jan 15</td><td>Rs. 77,400</td><td><span class="badge badge-green">Completed</span></td></tr>
+          <tr><td style="font-family:monospace;font-size:.78rem">TB-2025-X9KLM</td><td>Tom Wilson</td><td>Beach Escape</td><td>Mar 20</td><td>Rs. 216,000</td><td><span class="badge badge-blue">Upcoming</span></td></tr>
+          <tr><td style="font-family:monospace;font-size:.78rem">TB-2025-QR7TY</td><td>Lisa Park</td><td>Lion Rock Escape</td><td>Feb 10</td><td>Rs. 89,400</td><td><span class="badge badge-red">Cancelled</span></td></tr>
         </tbody>
       </table></div>
     </div>`;
@@ -2923,14 +3124,14 @@ function getAdminContent(s) {
       <div class="table-wrap"><table>
         <thead><tr><th>Reference</th><th>Customer</th><th>Package</th><th>Completion Date</th><th>Amount</th><th>Rating</th></tr></thead>
         <tbody>
-          <tr><td style="font-family:monospace;font-size:.78rem">TB-2025-AB3F2</td><td>Sarah Anderson</td><td>Bali Retreat</td><td>Jan 15, 2025</td><td>Rs. 77,400</td><td>⭐⭐⭐⭐⭐</td></tr>
-          <tr><td style="font-family:monospace;font-size:.78rem">TB-2025-KL2WX</td><td>Carlos Mendes</td><td>Amalfi Coast Odyssey</td><td>Nov 18, 2024</td><td>Rs. 192,000</td><td>⭐⭐⭐⭐⭐</td></tr>
-          <tr><td style="font-family:monospace;font-size:.78rem">TB-2025-VB9NM</td><td>Nimali Fernando</td><td>Sri Lanka Family Adventure</td><td>Oct 22, 2024</td><td>Rs. 115,200</td><td>⭐⭐⭐⭐⭐</td></tr>
-          <tr><td style="font-family:monospace;font-size:.78rem">TB-2025-HJ4QR</td><td>Lisa Thompson</td><td>Patagonia Wilderness Trek</td><td>Sep 8, 2024</td><td>Rs. 288,000</td><td>⭐⭐⭐⭐⭐</td></tr>
-          <tr><td style="font-family:monospace;font-size:.78rem">TB-2025-RT3YU</td><td>Chaminda Perera</td><td>Maldives Overwater Paradise</td><td>Aug 15, 2024</td><td>Rs. 240,000</td><td>⭐⭐⭐⭐⭐</td></tr>
-          <tr><td style="font-family:monospace;font-size:.78rem">TB-2025-WE8OP</td><td>Rashika de Silva</td><td>New Zealand South Island</td><td>Jul 3, 2024</td><td>Rs. 201,600</td><td>⭐⭐⭐⭐⭐</td></tr>
-          <tr><td style="font-family:monospace;font-size:.78rem">TB-2025-ZX5CV</td><td>Global Marketing Inc</td><td>Iceland Northern Lights</td><td>Jun 12, 2024</td><td>Rs. 288,000</td><td>⭐⭐⭐⭐⭐</td></tr>
-          <tr><td style="font-family:monospace;font-size:.78rem">TB-2025-BN7MK</td><td>Sunil Jayawardena</td><td>Vietnam Cultural Journey</td><td>May 28, 2024</td><td>Rs. 115,200</td><td>⭐⭐⭐⭐⭐</td></tr>
+          <tr><td style="font-family:monospace;font-size:.78rem">TB-2025-AB3F2</td><td>Sarah Anderson</td><td>Sacred City Retreat</td><td>Jan 15, 2025</td><td>Rs. 77,400</td><td>⭐⭐⭐⭐⭐</td></tr>
+          <tr><td style="font-family:monospace;font-size:.78rem">TB-2025-KL2WX</td><td>Carlos Mendes</td><td>Luxury Escape</td><td>Nov 18, 2024</td><td>Rs. 192,000</td><td>⭐⭐⭐⭐⭐</td></tr>
+          <tr><td style="font-family:monospace;font-size:.78rem">TB-2025-VB9NM</td><td>Nimali Fernando</td><td>Honeymoon Package</td><td>Oct 22, 2024</td><td>Rs. 115,200</td><td>⭐⭐⭐⭐⭐</td></tr>
+          <tr><td style="font-family:monospace;font-size:.78rem">TB-2025-HJ4QR</td><td>Lisa Thompson</td><td>Wildlife Safari</td><td>Sep 8, 2024</td><td>Rs. 288,000</td><td>⭐⭐⭐⭐⭐</td></tr>
+          <tr><td style="font-family:monospace;font-size:.78rem">TB-2025-RT3YU</td><td>Chaminda Perera</td><td>Honeymoon Package</td><td>Aug 15, 2024</td><td>Rs. 240,000</td><td>⭐⭐⭐⭐⭐</td></tr>
+          <tr><td style="font-family:monospace;font-size:.78rem">TB-2025-WE8OP</td><td>Rashika de Silva</td><td>Scenic Rail Journey</td><td>Jul 3, 2024</td><td>Rs. 201,600</td><td>⭐⭐⭐⭐⭐</td></tr>
+          <tr><td style="font-family:monospace;font-size:.78rem">TB-2025-ZX5CV</td><td>Global Marketing Inc</td><td>Corporate Leadership Retreat</td><td>Jun 12, 2024</td><td>Rs. 288,000</td><td>⭐⭐⭐⭐⭐</td></tr>
+          <tr><td style="font-family:monospace;font-size:.78rem">TB-2025-BN7MK</td><td>Sunil Jayawardena</td><td>Sacred City Retreat</td><td>May 28, 2024</td><td>Rs. 115,200</td><td>⭐⭐⭐⭐⭐</td></tr>
         </tbody>
       </table></div>
     </div>`;
@@ -3244,15 +3445,15 @@ function openThumbnailVideo(el) {
 // AI CHAT
 // ════════════════════════════════════════════════
 const AI_RESPONSES = [
-  { keywords: ['bali', 'indonesia'], reply: 'Bali is one of our most popular destinations. Our 8-day Enchanted Bali Retreat at $1,290 per person covers temples, rice terraces, Mount Batur sunrise, and a full spa day. Best time to visit is April through October. Visa on Arrival available for most nationalities.' },
-  { keywords: ['japan', 'cherry', 'blossom', 'sakura'], reply: 'Our 14-day Japan Cherry Blossom Trail is an extraordinary journey from Tokyo to Osaka. Book early — this package sells out 4-6 months ahead. We track the sakura forecast and adjust departure dates each season.' },
-  { keywords: ['budget', 'cheap', 'affordable', 'value'], reply: 'Our best value packages are Morocco ($1,480 / 9 days) and Bali ($1,290 / 8 days). Group discounts of 10-15% apply for 10 or more travelers. Early bird discounts of 20% are available 60 days ahead.' },
-  { keywords: ['safari', 'africa', 'serengeti', 'tanzania'], reply: 'Our Serengeti Safari Adventure is a premium 12-day experience at $4,200 per person, rated 5.0 stars. The Great Migration occurs July-October; the Ngorongoro Crater offers year-round Big Five sightings.' },
+  { keywords: ['sigiriya', 'lion rock', 'dambulla'], reply: 'Lion Rock Escape is one of our most popular short Sri Lanka packages. It focuses on Sigiriya, Dambulla, and Polonnaruwa with local road transfers, guided cultural visits, and comfortable hotel stays.' },
+  { keywords: ['kandy', 'heritage', 'sacred city'], reply: 'Sacred City Retreat is ideal if you want a culture-focused journey through Colombo, Anuradhapura, Sigiriya, and Kandy. It combines heritage sites, hotel stays, and private local transport.' },
+  { keywords: ['budget', 'cheap', 'affordable', 'value'], reply: 'Our best value Sri Lanka packages usually include Wellness Retreat, Sacred City Retreat, and Hill Country Escape. Group discounts of 10-15% apply for larger bookings, and selected departures include promotional pricing.' },
+  { keywords: ['safari', 'yala', 'udawalawe', 'wildlife'], reply: 'Wildlife Safari is our main Sri Lanka wildlife package, covering Yala and Udawalawe with safari jeep experiences, local lodges, and road transfers. The driest months usually offer the strongest wildlife viewing.' },
   { keywords: ['cancel', 'refund'], reply: 'Free cancellation is available up to 14 days before departure. Between 7 and 14 days, a 25% fee applies. Within 7 days, bookings are non-refundable. You can cancel directly from your Dashboard.' },
-  { keywords: ['group', 'corporate', 'team', 'family'], reply: 'We offer dedicated group booking tools. Groups of 10+ receive 10% off; 20+ get 15% off. Corporate accounts include approval workflows, invoices, and an account manager. Contact corporate@travelbooker.com.' },
-  { keywords: ['visa'], reply: 'Visa requirements vary by nationality and destination. We provide documentation guidance for all packages. Generally: Bali — Visa on Arrival for most; Japan — visa-free for EU, UK, US; Morocco — visa-free for most Western passports.' },
-  { keywords: ['maldives', 'overwater'], reply: 'Our Maldives Overwater Escape is 7 days at $3,200 per person, rated 5.0 stars. The overwater villa includes seaplane transfers, full board, snorkel equipment, and a sunset dhoni cruise. Perfect for honeymoons.' },
-  { keywords: ['patagonia', 'trek', 'chile', 'argentina'], reply: 'Our 15-day Patagonia Wilderness Trek covers Torres del Paine, Perito Moreno Glacier, and the Fitz Roy massif at $3,900 per person. Moderate to challenging fitness level required. Best season: November through March.' }
+  { keywords: ['group', 'corporate', 'team', 'family'], reply: 'We offer dedicated group booking tools for Sri Lanka travel. Groups of 10+ receive 10% off, 20+ get 15% off, and corporate accounts include approval workflows, invoices, and an account manager.' },
+  { keywords: ['documents', 'id', 'check-in'], reply: 'For Sri Lanka domestic travel, most bookings only require the identification details needed for hotel check-in and payment verification. Any supplier-specific requirements are shown before confirmation.' },
+  { keywords: ['honeymoon', 'mirissa', 'romantic'], reply: 'Honeymoon Package is a romantic Sri Lanka itinerary covering Ella and Mirissa with scenic travel, private experiences, and beach time. It is one of our best options for couples.' },
+  { keywords: ['ella', 'train', 'hill country'], reply: 'Scenic Rail Journey and Hill Country Escape are great picks for Ella, Kandy, and Nuwara Eliya. They focus on rail scenery, tea country views, boutique stays, and relaxed local transfers.' }
 ];
 
 function toggleAI() {
@@ -3279,7 +3480,7 @@ function sendAI() {
   // Typing indicator
   setTimeout(() => {
     const lower = msg.toLowerCase();
-    let reply = 'I can help with destination recommendations, package details, visa guidance, group bookings, cancellations, and more. Try asking about a specific destination or feature.';
+    let reply = 'I can help with Sri Lanka destination recommendations, package details, local transport, group bookings, cancellations, and more. Try asking about a specific place or package.';
     for (const r of AI_RESPONSES) {
       if (r.keywords.some(kw => lower.includes(kw))) { reply = r.reply; break; }
     }
@@ -3365,6 +3566,7 @@ function submitBulkBooking() {
   document.getElementById('bulkTravelers').value = '20';
   document.getElementById('bulkDate').value = '';
   document.getElementById('bulkNotes').value = '';
+  syncCustomSelect(document.getElementById('bulkPackage'));
   validateBulkForm();
 }
 
@@ -3583,6 +3785,9 @@ function updateCancellationPolicy() {
   // Render home featured
   renderFeatured();
   setupHomeSearch();
+  initializeCustomSelects();
+  syncCustomSelects();
+  customSelectObserver.observe(document.body, { childList: true, subtree: true });
 
   // Keyboard nav for logo
   document.querySelector('.logo').addEventListener('keydown', e => {
@@ -3593,4 +3798,17 @@ function updateCancellationPolicy() {
   toggleBusinessAuthField('loginRole', 'loginBusinessNameField');
   toggleBusinessAuthField('signupRole', 'signupBusinessNameField');
 })();
+
+
+
+
+
+
+
+
+
+
+
+
+
 
