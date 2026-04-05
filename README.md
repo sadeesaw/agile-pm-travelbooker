@@ -68,12 +68,6 @@ The app is organized inside a single HTML entry point with JavaScript-rendered s
 - `Legal / Info pages`
 - `AI Assistant`
 
-Core logic lives in:
-
-- [index.html](C:\Users\DELL\Downloads\Agile PM GCW\travel booker\index.html)
-- [styles.css](C:\Users\DELL\Downloads\Agile PM GCW\travel booker\styles.css)
-- [app.js](C:\Users\DELL\Downloads\Agile PM GCW\travel booker\app.js)
-
 ## Current Data Model
 
 The app currently uses in-file JavaScript datasets for:
@@ -86,29 +80,8 @@ The app currently uses in-file JavaScript datasets for:
 
 These are defined in [app.js](C:\Users\DELL\Downloads\Agile PM GCW\travel booker\app.js).
 
-## Sri Lanka Domestic Travel Scope
-
-This project has been cleaned up to support a domestic Sri Lanka travel model.
-
-That means:
-
-- No international destinations should be shown
-- No flight or airport-based package logic should remain
-- No visa or immigration-based travel flows should remain
-- Pricing should reflect local travel components only
-- Dashboards and bookings should point to active Sri Lanka package data
-
 ## Notes
 
 - This project currently uses mock/static data rather than a live backend
 - Dashboard sections include demo content and UI flows
 - Payment, booking, and support interactions are frontend simulations
-
-## Future Improvements
-
-- Connect packages, hotels, and bookings to a real backend/database
-- Add persistent authentication
-- Add real booking validation and payment integration
-- Add admin content management for packages and hotels
-- Add automated tests for filtering, booking, and dashboard flows
-
