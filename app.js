@@ -1348,7 +1348,7 @@ function renderIndividualPackages(dest, budget = Infinity) {
     if (list.length === 0) {
       renderEmptyState(grid, 'No packages match your current search. Try a broader term or higher budget.');
     } else {
-      grid.innerHTML = list.map(pkgCard).join('');
+      grid.innerHTML = list.map(pkg => pkgCard(pkg, 'Individual')).join('');
     }
   }
   renderTravelerDestinations('individualHotelGrid', dest, budget);
@@ -1366,7 +1366,7 @@ function renderFamilyPackages(dest, budget = Infinity) {
     if (list.length === 0) {
       renderEmptyState(grid, 'No family packages match your current search. Try a broader term or higher budget.');
     } else {
-      grid.innerHTML = list.map(pkg => pkgCard(pkg, true)).join('');
+      grid.innerHTML = list.map(pkg => pkgCard(pkg, 'Family', true)).join('');
     }
   }
   renderTravelerDestinations('familyHotelGrid', dest, budget);
@@ -1382,16 +1382,20 @@ function renderGroupPackages(dest, budget = Infinity) {
     if (list.length === 0) {
       renderEmptyState(grid, 'No group packages match your current search. Try a broader term or higher budget.');
     } else {
-      grid.innerHTML = list.map(pkg => pkgCard(pkg, false, true)).join('');
+      grid.innerHTML = list.map(pkg => pkgCard(pkg, 'Group', false, true)).join('');
     }
   }
   renderTravelerDestinations('groupHotelGrid', dest, budget);
 }
 
-function pkgCard(pkg, familyMode = false, groupMode = false) {
+function pkgCard(pkg, travelerLabel = '', familyMode = false, groupMode = false) {
   const childInfo = familyMode && pkg.childDiscount ? `<div style="font-size:.8rem;color:var(--green);margin-top:4px">👶 ${pkg.childDiscount}</div>` : '';
 
   // Calculate discount display
+  const travelerBadgeClass = familyMode ? 'badge-green' : groupMode ? 'badge-blue' : 'badge';
+  const travelerBadge = travelerLabel
+    ? `<div class="pkg-badge" style="top:8px;right:8px"><span class="badge ${travelerBadgeClass}">${travelerLabel}</span></div>`
+    : '';
   let discountBadge = '';
   let priceDisplay = `<span class="amount">${currencySymbol}${convertPrice(pkg.price).toLocaleString()}</span>`;
   if (pkg.discount) {
@@ -1409,8 +1413,7 @@ function pkgCard(pkg, familyMode = false, groupMode = false) {
         <img src="${pkg.img}" alt="${pkg.title}" loading="lazy" />
         <div class="pkg-badge"><span class="badge">${pkg.badge}</span></div>
         ${discountBadge}
-        ${familyMode ? '<div class="pkg-badge" style="top:8px;right:8px"><span class="badge badge-green">👨‍👩‍👧‍👦 Family</span></div>' : ''}
-        ${groupMode ? '<div class="pkg-badge" style="top:8px;right:8px"><span class="badge badge-blue">👥 Group</span></div>' : ''}
+        ${travelerBadge}
         <button class="pkg-fav" onclick="event.stopPropagation();showToast('Added to wishlist')" aria-label="Add to wishlist">
           <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
         </button>
