@@ -749,6 +749,53 @@ const ADMIN_USERS = [
   { id: 'acme-corp', name: 'ACME Corp', role: 'Corporate', email: 'travel@acme.com', joined: 'Jun 2023', bookings: 84, status: 'Under Review', details: 'Corporate travel agreement pending renewal.' }
 ];
 
+const ADMIN_BOOKING_TYPE_DATA = [
+  { label: 'Leisure Escapes', value: 42, color: '#ff8a5b' },
+  { label: 'Corporate Travel', value: 27, color: '#5b6cff' },
+  { label: 'Family Tours', value: 18, color: '#18c7a1' },
+  { label: 'Wellness & Romance', value: 13, color: '#ffc857' }
+];
+
+const ADMIN_OVERVIEW_TREND = [
+  { label: 'Mon', value: 52, color: '#5b6cff' },
+  { label: 'Tue', value: 64, color: '#24c5a1' },
+  { label: 'Wed', value: 71, color: '#ff8a5b' },
+  { label: 'Thu', value: 68, color: '#ff5fa2' },
+  { label: 'Fri', value: 84, color: '#8f67ff' },
+  { label: 'Sat', value: 93, color: '#ffb347' },
+  { label: 'Sun', value: 78, color: '#23b5e8' }
+];
+
+const ADMIN_RECENT_ACTIVITY = [
+  { time: '2 min ago', title: 'Sacred City Retreat was booked', meta: 'Sarah Anderson completed checkout worth Rs. 115,000', tone: 'good' },
+  { time: '8 min ago', title: 'Bulk corporate request received', meta: 'Martinez Agency submitted 24 seats for June departures', tone: 'info' },
+  { time: '14 min ago', title: 'Top-up payment captured', meta: 'TechCorp Solutions cleared the final invoice installment', tone: 'good' },
+  { time: '21 min ago', title: 'Customer engagement spiked', meta: 'Push notification campaign lifted return visits by 12%', tone: 'warm' }
+];
+
+const ADMIN_DESTINATION_DATA = [
+  { label: 'Ella', value: 92, amount: '92 bookings', color: '#5b6cff' },
+  { label: 'Mirissa', value: 81, amount: '81 bookings', color: '#ff8a5b' },
+  { label: 'Kandy', value: 74, amount: '74 bookings', color: '#18c7a1' },
+  { label: 'Sigiriya', value: 59, amount: '59 bookings', color: '#ffc857' },
+  { label: 'Bentota', value: 48, amount: '48 bookings', color: '#ff5fa2' }
+];
+
+const ADMIN_ENGAGEMENT_SERIES = [
+  { label: 'W1', value: 48 },
+  { label: 'W2', value: 56 },
+  { label: 'W3', value: 61 },
+  { label: 'W4', value: 72 },
+  { label: 'W5', value: 68 },
+  { label: 'W6', value: 79 }
+];
+
+const ADMIN_CHANNEL_DATA = [
+  { label: 'Direct', value: 46, detail: '46% of bookings', color: '#5b6cff' },
+  { label: 'Travel Agents', value: 31, detail: '31% of bookings', color: '#ff8a5b' },
+  { label: 'Corporate', value: 23, detail: '23% of bookings', color: '#18c7a1' }
+];
+
 // ════════════════════════════════════════════════
 // NAVIGATION
 // ════════════════════════════════════════════════
@@ -2990,30 +3037,23 @@ function getCorporateContent(s) {
 // ── ADMIN ──
 function getAdminContent(s) {
   if (s === 'overview') return `
-    <div class="dash-header"><h2>Admin Overview</h2><p>System-wide monitoring and management</p></div>
-    <div class="stats-grid">
-      <div class="stat-card"><div class="label">Total Users</div><div class="value">12,840</div><div class="sub">+124 this week</div></div>
-      <div class="stat-card"><div class="label">Active Bookings</div><div class="value">3,420</div><div class="sub">+8% vs last month</div></div>
-      <div class="stat-card"><div class="label">Revenue (MTD)</div><div class="value">Rs. 144,000,000</div><div class="sub">On track</div></div>
-      <div class="stat-card"><div class="label">Packages Live</div><div class="value">11</div><div class="sub">16 pending review</div></div>
+    <div class="dash-header admin-header">
+      <h2>Admin Overview</h2>
+      <p>A real-time view of booking trends, performance, and platform activity.</p>
     </div>
-    <div class="dash-card">
-      <h4>System Status</h4>
-      <div class="alert alert-warning">16 packages pending content review for Q2 season update</div>
-      <div class="alert alert-red">Payment gateway latency detected: avg 3.2s (normal: under 1s)</div>
-      <div class="alert alert-success">All servers operating normally. Last backup: 2 hours ago</div>
+    <div class="stats-grid admin-stats-grid">
+      ${adminStatCard('Total Users', '12,840', '+124 new this week', 'peach', '01')}
+      ${adminStatCard('Active Bookings', '3,420', '+8% vs last month', 'violet', '02')}
+      ${adminStatCard('Revenue (MTD)', 'Rs. 144M', '92% of monthly goal reached', 'mint', '03')}
+      ${adminStatCard('Avg. Trip Value', 'Rs. 188K', 'Higher by Rs. 14K this month', 'gold', '04')}
     </div>
-    <div class="dash-card">
-      <h4>Recent Activity</h4>
-      <div class="table-wrap"><table>
-        <thead><tr><th>Time</th><th>User</th><th>Action</th><th>Status</th></tr></thead>
-        <tbody>
-          <tr><td>2 min ago</td><td>sarah@mail.com</td><td>Booked Sacred City Retreat</td><td><span class="badge badge-green">OK</span></td></tr>
-          <tr><td>8 min ago</td><td>Agent: Martinez</td><td>Bulk booking &times; 24</td><td><span class="badge badge-blue">Processing</span></td></tr>
-          <tr><td>12 min ago</td><td>corp@acme.com</td><td>Invoice generated</td><td><span class="badge badge-green">OK</span></td></tr>
-          <tr><td>18 min ago</td><td>new_user@abc.com</td><td>Account created</td><td><span class="badge badge-green">OK</span></td></tr>
-        </tbody>
-      </table></div>
+    <div class="admin-overview-grid">
+      ${adminBarsCard('Booking Momentum', 'Daily booking volume over the last 7 days', ADMIN_OVERVIEW_TREND)}
+      ${adminDonutCard('Booking Types', 'Share of bookings by travel category', '100%', 'Bookings', ADMIN_BOOKING_TYPE_DATA)}
+    </div>
+    <div class="admin-overview-grid secondary">
+      ${adminRecentBookingsCard(bookingHistory.filter(booking => booking.status !== 'Cancelled').slice(0, 4))}
+      ${adminActivityCard(ADMIN_RECENT_ACTIVITY)}
     </div>`;
 
   if (s === 'packages') return `
@@ -3083,26 +3123,20 @@ function getAdminContent(s) {
     </div>`;
 
   if (s === 'analytics') return `
-    <div class="dash-header"><h2>Analytics</h2></div>
-    <div class="stats-grid">
-      <div class="stat-card"><div class="label">Conversion Rate</div><div class="value">4.2%</div><div class="sub">+0.3% vs last month</div></div>
-      <div class="stat-card"><div class="label">Avg Order Value</div><div class="value">Rs. 1,915,200</div><div class="sub">+Rs. 72,000 vs last month</div></div>
-      <div class="stat-card"><div class="label">Page Views (MTD)</div><div class="value">184k</div><div class="sub">+12% growth</div></div>
-      <div class="stat-card"><div class="label">NPS Score</div><div class="value">72</div><div class="sub">Industry avg: 45</div></div>
+    <div class="dash-header admin-header">
+      <h2>Analytics</h2>
+      <p>Visual insight into where guests are booking, how they engage, and which channels convert best.</p>
     </div>
-    <div class="dash-card">
-      <h4>Top Performing Packages (This Month)</h4>
-      <div class="table-wrap"><table>
-        <thead><tr><th>Package</th><th>Bookings</th><th>Revenue</th><th>Rating</th></tr></thead>
-        <tbody>
-          ${PACKAGES.slice(0, 5).map((p, i) => `<tr>
-            <td>${p.title}</td>
-            <td>${40 - i * 5}</td>
-            <td>Rs. ${((40 - i * 5) * p.price).toLocaleString()}</td>
-            <td>${p.rating}</td>
-          </tr>`).join('')}
-        </tbody>
-      </table></div>
+    <div class="stats-grid admin-stats-grid">
+      ${adminStatCard('Conversion Rate', '4.2%', '+0.3% vs last month', 'violet', 'A1')}
+      ${adminStatCard('Returning Visitors', '38%', 'Strong loyalty from remarketing', 'mint', 'A2')}
+      ${adminStatCard('Page Views (MTD)', '184K', '+12% month over month', 'peach', 'A3')}
+      ${adminStatCard('NPS Score', '72', '27 points above travel average', 'gold', 'A4')}
+    </div>
+    <div class="admin-analytics-grid">
+      ${adminHorizontalMetricsCard('Top Destinations Booked Recently', 'Most popular destinations in the last 30 days', ADMIN_DESTINATION_DATA)}
+      ${adminLineChartCard('Customer Engagement', 'Weekly interactions across email, app, and web touchpoints', ADMIN_ENGAGEMENT_SERIES)}
+      ${adminHorizontalMetricsCard('Booking Channel Mix', 'Additional stat: which channels are driving recent conversions', ADMIN_CHANNEL_DATA)}
     </div>`;
 
   if (s === 'past') return `
@@ -3223,6 +3257,202 @@ function budgetBar(label, spent, budget, pct) {
     <div class="budget-bar-wrap">
       <div class="budget-bar-label"><span>${label}</span><span>${spent} of ${budget}</span></div>
       <div class="budget-bar"><div class="budget-bar-fill" style="width:${pct}%"></div></div>
+    </div>`;
+}
+
+function adminStatCard(label, value, sub, accentClass, sparkle) {
+  return `
+    <div class="stat-card stat-card-vivid ${accentClass}">
+      <div class="stat-card-top">
+        <div class="label">${label}</div>
+        <div class="stat-spark">${sparkle}</div>
+      </div>
+      <div class="value">${value}</div>
+      <div class="sub">${sub}</div>
+    </div>`;
+}
+
+function createDonutGradient(data) {
+  let start = 0;
+  const stops = data.map(item => {
+    const end = start + item.value;
+    const segment = `${item.color} ${start}% ${end}%`;
+    start = end;
+    return segment;
+  });
+  return `conic-gradient(${stops.join(', ')})`;
+}
+
+function adminDonutCard(title, subtitle, centerValue, centerLabel, data) {
+  return `
+    <div class="dash-card admin-panel admin-chart-panel">
+      <div class="panel-heading">
+        <div>
+          <h4>${title}</h4>
+          <p>${subtitle}</p>
+        </div>
+      </div>
+      <div class="admin-donut-layout">
+        <div class="admin-donut" style="background:${createDonutGradient(data)}">
+          <div class="admin-donut-hole">
+            <strong>${centerValue}</strong>
+            <span>${centerLabel}</span>
+          </div>
+        </div>
+        <div class="admin-legend">
+          ${data.map(item => `
+            <div class="admin-legend-item">
+              <div class="admin-legend-label">
+                <span class="admin-legend-swatch" style="background:${item.color}"></span>
+                <span>${item.label}</span>
+              </div>
+              <strong>${item.value}%</strong>
+            </div>`).join('')}
+        </div>
+      </div>
+    </div>`;
+}
+
+function adminBarsCard(title, subtitle, items) {
+  const max = Math.max(...items.map(item => item.value), 1);
+  return `
+    <div class="dash-card admin-panel admin-chart-panel">
+      <div class="panel-heading">
+        <div>
+          <h4>${title}</h4>
+          <p>${subtitle}</p>
+        </div>
+      </div>
+      <div class="admin-bars-card">
+        <div class="admin-bars">
+          ${items.map(item => `
+            <div class="admin-bar-col">
+              <div class="admin-bar-track">
+                <div class="admin-bar-fill" style="height:${(item.value / max) * 100}%;background:${item.color}"></div>
+              </div>
+              <div class="admin-bar-value">${item.value}</div>
+              <div class="admin-bar-label">${item.label}</div>
+            </div>`).join('')}
+        </div>
+      </div>
+    </div>`;
+}
+
+function adminRecentBookingsCard(list) {
+  return `
+    <div class="dash-card admin-panel">
+      <div class="panel-heading">
+        <div>
+          <h4>Recent Bookings</h4>
+          <p>Latest confirmed and upcoming reservations</p>
+        </div>
+      </div>
+      <div class="admin-list">
+        ${list.map(booking => `
+          <div class="admin-list-item">
+            <div>
+              <strong>${booking.pkg}</strong>
+              <span>${booking.client}</span>
+            </div>
+            <div>
+              <strong>${booking.date}</strong>
+              <span>${booking.ref}</span>
+            </div>
+            <div>
+              <span class="badge ${booking.status === 'Upcoming' ? 'badge-blue' : 'badge-green'}">${booking.status}</span>
+            </div>
+          </div>`).join('')}
+      </div>
+    </div>`;
+}
+
+function adminActivityCard(list) {
+  return `
+    <div class="dash-card admin-panel">
+      <div class="panel-heading">
+        <div>
+          <h4>Recent Activity</h4>
+          <p>Live platform movements and signals</p>
+        </div>
+      </div>
+      <div class="admin-timeline">
+        ${list.map(item => `
+          <div class="admin-timeline-item">
+            <div class="admin-timeline-dot ${item.tone}"></div>
+            <div class="admin-timeline-copy">
+              <div class="admin-timeline-time">${item.time}</div>
+              <strong>${item.title}</strong>
+              <p>${item.meta}</p>
+            </div>
+          </div>`).join('')}
+      </div>
+    </div>`;
+}
+
+function adminHorizontalMetricsCard(title, subtitle, items) {
+  return `
+    <div class="dash-card admin-panel">
+      <div class="panel-heading">
+        <div>
+          <h4>${title}</h4>
+          <p>${subtitle}</p>
+        </div>
+      </div>
+      <div class="admin-metric-list">
+        ${items.map(item => `
+          <div class="admin-metric-row">
+            <div class="admin-metric-top">
+              <strong>${item.label}</strong>
+              <span>${item.amount || item.detail}</span>
+            </div>
+            <div class="admin-metric-track">
+              <div class="admin-metric-fill" style="width:${item.value}%;background:${item.color}"></div>
+            </div>
+          </div>`).join('')}
+      </div>
+    </div>`;
+}
+
+function adminLineChartCard(title, subtitle, points) {
+  const width = 360;
+  const height = 160;
+  const max = Math.max(...points.map(point => point.value), 1);
+  const stepX = points.length > 1 ? width / (points.length - 1) : width;
+  const polyline = points.map((point, index) => {
+    const x = index * stepX;
+    const y = height - ((point.value / max) * (height - 24)) - 12;
+    return `${x},${y}`;
+  }).join(' ');
+
+  return `
+    <div class="dash-card admin-panel admin-chart-panel">
+      <div class="panel-heading">
+        <div>
+          <h4>${title}</h4>
+          <p>${subtitle}</p>
+        </div>
+      </div>
+      <div class="admin-line-chart">
+        <svg viewBox="0 0 ${width} ${height}" preserveAspectRatio="none" aria-hidden="true">
+          <defs>
+            <linearGradient id="engagementGradient" x1="0%" x2="100%" y1="0%" y2="0%">
+              <stop offset="0%" stop-color="#5b6cff"></stop>
+              <stop offset="50%" stop-color="#ff5fa2"></stop>
+              <stop offset="100%" stop-color="#18c7a1"></stop>
+            </linearGradient>
+          </defs>
+          <line x1="0" y1="${height - 12}" x2="${width}" y2="${height - 12}" class="admin-axis"></line>
+          <polyline points="${polyline}" fill="none" stroke="url(#engagementGradient)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"></polyline>
+          ${points.map((point, index) => {
+            const x = index * stepX;
+            const y = height - ((point.value / max) * (height - 24)) - 12;
+            return `<circle cx="${x}" cy="${y}" r="6" fill="#ffffff" stroke="#5b6cff" stroke-width="4"></circle>`;
+          }).join('')}
+        </svg>
+        <div class="admin-line-labels">
+          ${points.map(point => `<span>${point.label}</span>`).join('')}
+        </div>
+      </div>
     </div>`;
 }
 
